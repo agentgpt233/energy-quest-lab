@@ -10,13 +10,14 @@ export const Bonus = () => {
   return (
     <>
       <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <section className="py-24 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5 relative overflow-hidden">
+      <section className="py-12 sm:py-24 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden opacity-30 pointer-events-none">
         {[1, 2, 3].map((i) => (
           <Sparkles
             key={i}
-            className="absolute text-accent animate-float hidden md:block"
+            className="absolute text-accent animate-float hidden lg:block"
+            size={32}
             style={{
               left: `${i * 25 + 10}%`,
               top: `${i * 20 + 10}%`,
@@ -49,40 +50,26 @@ export const Bonus = () => {
             </div>
           </div>
 
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            🎉 Получи бонус-сундук и свой первый отчёт бесплатно
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 break-words px-4">
+            Открой бонус-сундук и получи стартовую энергию бесплатно ⚡
           </h2>
 
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            Первый недельный анализ — без карты и подписки.
+          <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4">
+            Все функции доступны бесплатно — просто будь активен.
             <br />
             <span className="text-primary font-semibold">
-              Безопасно. Научно. Интерактивно.
+              Без подписок. Без ограничений. Только энергия ⚡
             </span>
           </p>
 
           <Button
             size="lg"
             onClick={() => setIsModalOpen(true)}
-            className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-10 py-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-glow-pulse group"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground text-base sm:text-lg px-6 sm:px-10 py-5 sm:py-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-glow-pulse group w-full sm:w-auto max-w-md mx-4"
           >
-            <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-            Получить бонус-сундук энергии
+            <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform flex-shrink-0" />
+            <span className="break-words">Получить бонус-сундук энергии</span>
           </Button>
-
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 text-sm text-muted-foreground px-4">
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div
-                  key={i}
-                  className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent border-2 border-background"
-                />
-              ))}
-            </div>
-            <span className="font-medium text-center">
-              Уже более 3,000 человек открыли свой сундук сегодня 🔥
-            </span>
-          </div>
         </div>
       </div>
     </section>
