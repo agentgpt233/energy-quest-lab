@@ -33,26 +33,8 @@ export const HowItWorks = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12 max-w-6xl mx-auto">
-          {/* Phone mockup on the left */}
-          <div className="flex-shrink-0 animate-fade-in">
-            <div className="relative w-[280px] h-[570px]">
-              {/* Phone frame */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800 rounded-[3rem] shadow-2xl p-3">
-                <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
-                  <img 
-                    src={appScreenshot} 
-                    alt="Energy Quest App Screenshot" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-              {/* Phone notch */}
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-10"></div>
-            </div>
-          </div>
-
-          {/* Steps on the right */}
-          <div className="flex flex-col gap-8 flex-1">
+          {/* Steps on the left */}
+          <div className="flex flex-col gap-8 flex-1 order-2 lg:order-1">
             {steps.map((step, index) => {
               const Icon = step.icon;
               return (
@@ -78,6 +60,24 @@ export const HowItWorks = () => {
                 </div>
               );
             })}
+          </div>
+
+          {/* Phone mockup on the right */}
+          <div className="flex-shrink-0 animate-fade-in order-1 lg:order-2">
+            <div className="relative w-[280px] h-[570px]">
+              {/* Phone frame */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800 rounded-[3rem] shadow-2xl p-3">
+                <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
+                  <img 
+                    src={appScreenshot} 
+                    alt="Energy Quest App Screenshot" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              {/* Phone notch */}
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-10"></div>
+            </div>
           </div>
         </div>
 
