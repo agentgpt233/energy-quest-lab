@@ -38,12 +38,9 @@ export const Footer = () => {
           </div>
 
           <div
-            className="pt-8 border-t border-border text-sm text-muted-foreground animate-fade-in space-y-3"
+            className="pt-8 border-t border-border text-sm text-muted-foreground animate-fade-in"
             style={{ animationDelay: "0.2s" }}
           >
-            <p className="text-xs italic">
-              Приложение не является медицинским изделием. Рекомендации носят информационный характер.
-            </p>
             <p>© 2025 Medical Mind. Все права защищены.</p>
             <p className="mt-2">
               Научно-игровое приложение для восстановления энергии через нутриенты

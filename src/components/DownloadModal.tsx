@@ -18,13 +18,14 @@ export const DownloadModal = ({ isOpen, onClose }: DownloadModalProps) => {
             </div>
           </div>
           <DialogTitle className="text-center text-2xl">
-            🎁 Открой бонус-сундук
+            🎁 Бонус-сундук энергии
           </DialogTitle>
         </DialogHeader>
         
         <div className="space-y-6 py-4">
           <p className="text-center text-lg text-muted-foreground">
-            Получишь <span className="text-primary font-bold">1000 витакойнов</span> на старт. Все функции доступны бесплатно при активном участии.
+            Скачай по ссылке и получи{" "}
+            <span className="text-primary font-bold">1000 Витакойнов</span> в подарок! 💎
           </p>
 
           <div className="space-y-3">
@@ -48,7 +49,7 @@ export const DownloadModal = ({ isOpen, onClose }: DownloadModalProps) => {
           </div>
 
           <p className="text-center text-sm text-muted-foreground">
-            Без подписок. Без ограничений. Только энергия ⚡
+            Безопасно. Научно. Интерактивно. 🔒
           </p>
         </div>
       </DialogContent>
