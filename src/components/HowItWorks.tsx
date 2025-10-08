@@ -1,4 +1,5 @@
 import { Camera, FileText, Gift } from "lucide-react";
+import appAnalysis from "@/assets/app-analysis.jpg";
 
 const steps = [
   {
@@ -31,7 +32,7 @@ export const HowItWorks = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 max-w-5xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 max-w-5xl mx-auto mb-16">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
@@ -59,6 +60,37 @@ export const HowItWorks = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* Visual Demo Section */}
+        <div className="max-w-4xl mx-auto animate-fade-in" style={{ animationDelay: "0.5s" }}>
+          <div className="bg-gradient-to-br from-primary/5 via-secondary/10 to-accent/5 rounded-3xl p-8 md:p-12 border border-border">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+                Смотри, как это работает
+              </h3>
+              <p className="text-muted-foreground text-lg">
+                Детальный анализ каждого блюда с разбивкой по нутриентам
+              </p>
+            </div>
+            
+            <div className="relative w-full max-w-[320px] mx-auto">
+              {/* iPhone frame */}
+              <div className="relative bg-black rounded-[3rem] p-3 shadow-2xl animate-float">
+                {/* Notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-black rounded-b-3xl z-10"></div>
+                {/* Screen */}
+                <div className="relative bg-white rounded-[2.5rem] overflow-hidden">
+                  <img
+                    src={appAnalysis}
+                    alt="Детальный анализ блюда с нутриентами"
+                    className="w-full h-auto"
+                  />
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 blur-3xl -z-10" />
+            </div>
+          </div>
         </div>
 
         <p className="text-center text-lg text-muted-foreground mt-12 animate-fade-in">
