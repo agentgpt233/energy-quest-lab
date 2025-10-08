@@ -10,9 +10,9 @@ export const Hero = () => {
   return (
     <>
     <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-secondary/30 to-primary/5">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-secondary/30 to-primary/5 overflow-hidden">
       {/* Floating particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none">
         {["Ca", "Mg", "Zn", "Fe", "K", "Na"].map((element, i) => (
           <div
             key={element}
@@ -28,10 +28,10 @@ export const Hero = () => {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 py-20 relative z-10 max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 max-w-7xl w-full">
+        <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Left content */}
-          <div className="space-y-8 animate-fade-in">
+          <div className="space-y-8 animate-fade-in w-full max-w-full overflow-hidden">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full border border-accent/20">
               <Zap className="w-4 h-4 text-accent" />
               <span className="text-sm font-medium text-foreground">
@@ -53,10 +53,10 @@ export const Hero = () => {
             <Button
               size="lg"
               onClick={() => setIsModalOpen(true)}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in group w-full sm:w-auto"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm sm:text-base lg:text-lg px-4 sm:px-8 py-4 sm:py-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in group w-full sm:w-auto max-w-full"
             >
-              <Gift className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-              <span className="break-words">Начать бесплатно и открыть бонус-сундук энергии</span>
+              <Gift className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:rotate-12 transition-transform flex-shrink-0" />
+              <span className="break-words text-left">Начать бесплатно и открыть бонус-сундук энергии</span>
             </Button>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 text-sm text-muted-foreground">
@@ -73,10 +73,10 @@ export const Hero = () => {
           </div>
 
           {/* Right image */}
-          <div className="relative animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <div className="relative z-10 animate-float">
+          <div className="relative animate-fade-in w-full max-w-full overflow-hidden" style={{ animationDelay: "0.2s" }}>
+            <div className="relative z-10 animate-float w-full max-w-full">
               {/* iPhone frame */}
-              <div className="relative w-full max-w-[300px] mx-auto">
+              <div className="relative w-full max-w-[280px] sm:max-w-[300px] mx-auto">
                 {/* iPhone shadow and frame */}
                 <div className="relative bg-black rounded-[3rem] p-3 shadow-2xl">
                   {/* Notch */}
