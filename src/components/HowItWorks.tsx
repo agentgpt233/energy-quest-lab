@@ -70,7 +70,7 @@ export const HowItWorks = () => {
                 <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
                   <img 
                     src={appScreenshot} 
-                    alt="Energy Quest App Screenshot" 
+                    alt="Medical Mind App Screenshot" 
                     className="w-full h-full object-cover"
                   />
                 </div>

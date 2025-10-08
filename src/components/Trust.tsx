@@ -17,7 +17,7 @@ export const Trust = () => {
           </div>
 
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Научная основа Energy Quest
+            Научная основа Medical Mind
           </h2>
 
           <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
