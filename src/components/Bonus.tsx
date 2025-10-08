@@ -12,14 +12,14 @@ export const Bonus = () => {
       <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <section className="py-24 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5 relative overflow-hidden">
       {/* Background decorations */}
-      <div className="absolute inset-0 overflow-hidden opacity-30">
-        {[1, 2, 3, 4, 5].map((i) => (
+      <div className="absolute inset-0 overflow-hidden opacity-30 pointer-events-none">
+        {[1, 2, 3].map((i) => (
           <Sparkles
             key={i}
-            className="absolute text-accent animate-float"
+            className="absolute text-accent animate-float hidden md:block"
             style={{
-              left: `${i * 20}%`,
-              top: `${i * 15}%`,
+              left: `${i * 25 + 10}%`,
+              top: `${i * 20 + 10}%`,
               animationDelay: `${i * 0.3}s`,
             }}
           />
@@ -70,7 +70,7 @@ export const Bonus = () => {
             Получить бонус-сундук энергии
           </Button>
 
-          <div className="mt-8 flex items-center justify-center gap-2 text-sm text-muted-foreground">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 text-sm text-muted-foreground px-4">
             <div className="flex -space-x-2">
               {[1, 2, 3, 4, 5].map((i) => (
                 <div
@@ -79,7 +79,7 @@ export const Bonus = () => {
                 />
               ))}
             </div>
-            <span className="font-medium">
+            <span className="font-medium text-center">
               Уже более 3,000 человек открыли свой сундук сегодня 🔥
             </span>
           </div>

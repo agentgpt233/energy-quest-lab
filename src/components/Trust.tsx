@@ -4,8 +4,8 @@ export const Trust = () => {
   return (
     <section className="py-24 bg-gradient-to-b from-secondary/30 to-background relative overflow-hidden">
       {/* Background molecule decoration */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-5">
-        <Atom className="w-96 h-96 text-primary animate-float" />
+      <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
+        <Atom className="w-64 h-64 md:w-96 md:h-96 text-primary animate-float" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">

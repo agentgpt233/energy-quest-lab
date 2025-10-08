@@ -39,15 +39,15 @@ export const Hero = () => {
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground break-words">
               Закрой дефицит нутриентов{" "}
               <span className="text-primary">верни энергию дня</span> ⚡
             </h1>
 
-            <div className="space-y-3 text-base lg:text-lg text-muted-foreground leading-relaxed">
-              <p>📸 Сфотографируй еду - приложение рассчитает и сразу даст квест дня</p>
-              <p>📋 Каждый квест строится по нормам СанПин РФ с поправкой на твои данные</p>
-              <p>🎮 Игра выстраивает полезную привычку, а результат заметен уже через 7 дней</p>
+            <div className="space-y-3 text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-full">
+              <p className="break-words">📸 Сфотографируй еду - приложение рассчитает и сразу даст квест дня</p>
+              <p className="break-words">📋 Каждый квест строится по нормам СанПин РФ с поправкой на твои данные</p>
+              <p className="break-words">🎮 Игра выстраивает полезную привычку, а результат заметен уже через 7 дней</p>
             </div>
 
             <Button
@@ -59,7 +59,7 @@ export const Hero = () => {
               <span className="break-words">Начать бесплатно и открыть бонус-сундук энергии</span>
             </Button>
 
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 text-sm text-muted-foreground">
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (
                   <div
@@ -68,7 +68,7 @@ export const Hero = () => {
                   />
                 ))}
               </div>
-              <span>Более 3,000 человек открыли свой сундук сегодня 🔥</span>
+              <span className="break-words">Более 3,000 человек открыли свой сундук сегодня 🔥</span>
             </div>
           </div>
 
