@@ -17,12 +17,12 @@ export const Trust = () => {
           </div>
 
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Научная основа Energy Quest
+            Научная основа Medical Mind
           </h2>
 
           <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
             Мы объединили биомониторинг, нутрициологию и игровые механики,
-            чтобы сделать заботу о теле понятной, научной и увлекательной.
+            чтобы сделать заботу о себе понятной, научной и увлекательной.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 mt-12">
