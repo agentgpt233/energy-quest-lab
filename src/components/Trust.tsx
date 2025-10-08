@@ -17,30 +17,30 @@ export const Trust = () => {
           </div>
 
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Научная основа Medical Mind
+            Научная основа Energy Quest
           </h2>
 
           <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
             Мы объединили биомониторинг, нутрициологию и игровые механики,
-            чтобы сделать заботу об организме понятной, научной и увлекательной.
+            чтобы сделать заботу о теле понятной, научной и увлекательной.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 mt-12">
             {[
               {
-                icon: ShieldCheck,
-                title: "Научная достоверность",
-                description: "Все данные проверены исследованиями",
+                icon: Atom,
+                title: "Достоверные данные",
+                description: "Алгоритмы основаны на данных биомониторинга и подтверждённых исследованиях.",
               },
               {
                 icon: Users,
                 title: "Экспертная команда",
-                description: "Врачи, нутрициологи и инженеры здоровья",
+                description: "Создано при участии врачей, нутрициологов и инженеров здоровья.",
               },
               {
-                icon: Atom,
-                title: "Актуальные нормы",
-                description: "СанПиН РФ и рекомендации ВОЗ",
+                icon: ShieldCheck,
+                title: "Наука в игровом формате",
+                description: "Мы перевели научные данные в понятные квесты, чтобы путь к балансу был простым и мотивирующим ⚡",
               },
             ].map((item, index) => {
               const Icon = item.icon;

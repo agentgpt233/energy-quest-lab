@@ -40,14 +40,17 @@ export const Hero = () => {
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground break-words">
-              Закрой дефицит нутриентов{" "}
-              <span className="text-primary">верни энергию дня</span> ⚡
+              Закрой дефициты нутриентов — верни энергию дня ⚡
             </h1>
 
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-full break-words mb-4">
+              Для тех, кто хочет вернуть энергию без подсчёта калорий и жёстких диет.
+            </p>
+
             <div className="space-y-3 text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-full">
-              <p className="break-words">📸 Сфотографируй еду - приложение рассчитает и сразу даст квест дня</p>
-              <p className="break-words">📋 Каждый квест строится по нормам СанПин РФ с поправкой на твои данные</p>
-              <p className="break-words">🎮 Игра выстраивает полезную привычку, а результат заметен уже через 7 дней</p>
+              <p className="break-words">📸 Сфотографируй еду — приложение рассчитает нутриенты и даст квест дня.</p>
+              <p className="break-words">📋 Каждый квест строится по нормам СанПиН РФ с учётом твоих данных.</p>
+              <p className="break-words">🎮 Игра выстраивает полезную привычку, а результат заметен уже через 7 дней.</p>
             </div>
 
             <Button
@@ -56,7 +59,7 @@ export const Hero = () => {
               className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm sm:text-base lg:text-lg px-4 sm:px-8 py-4 sm:py-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in group w-full sm:w-auto max-w-full whitespace-normal leading-snug"
             >
               <Gift className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:rotate-12 transition-transform flex-shrink-0" />
-              <span className="break-words">Начать бесплатно и открыть бонус-сундук энергии</span>
+              <span className="break-words">Начать бесплатно</span>
             </Button>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 text-sm text-muted-foreground">

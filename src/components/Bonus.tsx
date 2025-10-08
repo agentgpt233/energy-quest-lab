@@ -51,15 +51,15 @@ export const Bonus = () => {
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 break-words px-4">
-            Открой бонус-сундук и получи стартовую энергию бесплатно ⚡
+            Открой бонус-сундук и получи стартовую энергию
           </h2>
 
           <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4">
-            Все функции доступны бесплатно — просто будь активен.
-            <br />
             <span className="text-primary font-semibold">
-              Без подписок. Без ограничений. Только энергия ⚡
+              Получишь 1000 витакойнов на старт.
             </span>
+            <br />
+            Все функции доступны бесплатно при активном участии.
           </p>
 
           <Button
@@ -68,7 +68,7 @@ export const Bonus = () => {
             className="bg-accent hover:bg-accent/90 text-accent-foreground text-base sm:text-lg px-6 sm:px-10 py-5 sm:py-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-glow-pulse group w-full sm:w-auto max-w-md mx-4"
           >
             <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform flex-shrink-0" />
-            <span className="break-words">Получить бонус-сундук энергии</span>
+            <span className="break-words">Открыть бонус-сундук</span>
           </Button>
         </div>
       </div>
