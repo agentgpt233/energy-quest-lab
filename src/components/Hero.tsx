@@ -1,9 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Gift, Zap } from "lucide-react";
 import heroPhone from "@/assets/hero-phone.jpg";
+import { useState } from "react";
+import { DownloadModal } from "./DownloadModal";
 
 export const Hero = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
+    <>
+    <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/30 to-primary/5">
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden">
@@ -33,20 +39,21 @@ export const Hero = () => {
               </span>
             </div>
 
-            <h1 className="text-5xl lg:text-6xl font-bold leading-tight text-foreground">
-              Закрой дефициты нутриентов — почувствуй{" "}
-              <span className="text-primary">энергию дня</span> ⚡
+            <h1 className="text-4xl lg:text-5xl font-bold leading-tight text-foreground">
+              Закрой дефицит нутриентов{" "}
+              <span className="text-primary">верни энергию дня</span> ⚡
             </h1>
 
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              Приложение, созданное на основе научных исследований и норм СанПиН РФ.
-              Сфотографируй еду — получи персональный отчёт по нутриентам и квесты
-              для восстановления баланса.
-            </p>
+            <div className="space-y-3 text-base lg:text-lg text-muted-foreground leading-relaxed">
+              <p>📸 Сфотографируй еду - приложение рассчитает и даст квест дня</p>
+              <p>📋 Каждый квест строится по нормам СанПин РФ с поправкой на твои данные</p>
+              <p>🎮 Игра выстраивает полезную привычку, а результат приходит сам</p>
+            </div>
 
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in group"
+              onClick={() => setIsModalOpen(true)}
+              className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in group"
             >
               <Gift className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
               Начать бесплатно и открыть бонус-сундук энергии
@@ -68,16 +75,28 @@ export const Hero = () => {
           {/* Right image */}
           <div className="relative animate-fade-in" style={{ animationDelay: "0.2s" }}>
             <div className="relative z-10 animate-float">
-              <img
-                src={heroPhone}
-                alt="Medical Mind App Interface"
-                className="w-full max-w-md mx-auto rounded-3xl shadow-2xl"
-              />
+              {/* iPhone frame */}
+              <div className="relative w-full max-w-[300px] mx-auto">
+                {/* iPhone shadow and frame */}
+                <div className="relative bg-black rounded-[3rem] p-3 shadow-2xl">
+                  {/* Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-black rounded-b-3xl z-10"></div>
+                  {/* Screen */}
+                  <div className="relative bg-white rounded-[2.5rem] overflow-hidden">
+                    <img
+                      src={heroPhone}
+                      alt="Medical Mind App Interface"
+                      className="w-full h-auto"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 blur-3xl -z-10" />
           </div>
         </div>
       </div>
     </section>
+    </>
   );
 };

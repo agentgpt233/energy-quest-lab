@@ -1,12 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Gift, Sparkles, Zap } from "lucide-react";
 import { useState } from "react";
+import { DownloadModal } from "./DownloadModal";
 
 export const Bonus = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="py-24 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5 relative overflow-hidden">
+    <>
+      <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <section className="py-24 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden opacity-30">
         {[1, 2, 3, 4, 5].map((i) => (
@@ -59,7 +63,8 @@ export const Bonus = () => {
 
           <Button
             size="lg"
-            className="bg-accent hover:bg-accent/90 text-foreground text-lg px-10 py-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-glow-pulse group"
+            onClick={() => setIsModalOpen(true)}
+            className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-10 py-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-glow-pulse group"
           >
             <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
             Получить бонус-сундук энергии
@@ -81,5 +86,6 @@ export const Bonus = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };

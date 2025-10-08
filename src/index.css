@@ -17,9 +17,9 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 210 15% 20%;
 
-    --primary: 162 79% 68%;
+    --primary: 200 88% 48%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 162 90% 85%;
+    --primary-glow: 200 88% 65%;
 
     --secondary: 180 50% 96%;
     --secondary-foreground: 210 15% 20%;
@@ -27,25 +27,25 @@ All colors MUST be HSL.
     --muted: 180 30% 95%;
     --muted-foreground: 210 10% 50%;
 
-    --accent: 50 100% 50%;
-    --accent-foreground: 210 15% 20%;
+    --accent: 200 88% 48%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 180 20% 90%;
     --input: 180 20% 90%;
-    --ring: 162 79% 68%;
+    --ring: 200 88% 48%;
 
     --radius: 1rem;
 
     /* Градиенты */
-    --gradient-hero: linear-gradient(135deg, hsl(162 79% 68% / 0.1), hsl(180 70% 80% / 0.2));
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(180 50% 98%));
+    --gradient-hero: linear-gradient(135deg, hsl(200 88% 48% / 0.1), hsl(200 88% 65% / 0.2));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(200 50% 98%));
     
     /* Тени */
-    --shadow-glow: 0 0 40px hsl(162 79% 68% / 0.2);
-    --shadow-card: 0 4px 20px hsl(162 50% 60% / 0.1);
+    --shadow-glow: 0 0 40px hsl(200 88% 48% / 0.2);
+    --shadow-card: 0 4px 20px hsl(200 50% 60% / 0.1);
     
     /* Анимации */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -61,9 +61,9 @@ All colors MUST be HSL.
     --popover: 210 20% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 162 79% 68%;
-    --primary-foreground: 210 20% 10%;
-    --primary-glow: 162 90% 85%;
+    --primary: 200 88% 48%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 200 88% 65%;
 
     --secondary: 210 20% 15%;
     --secondary-foreground: 0 0% 98%;
@@ -71,15 +71,15 @@ All colors MUST be HSL.
     --muted: 210 20% 15%;
     --muted-foreground: 210 10% 60%;
 
-    --accent: 50 100% 50%;
-    --accent-foreground: 210 20% 10%;
+    --accent: 200 88% 48%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 50%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 210 20% 20%;
     --input: 210 20% 20%;
-    --ring: 162 79% 68%;
+    --ring: 200 88% 48%;
   }
 }
 
