@@ -16,30 +16,32 @@ export const Trust = () => {
             </div>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 break-words">
-            Мы объединили биомониторинг, нутрициологию и игровые механики,
-            чтобы сделать заботу о теле понятной, научной и увлекательной.
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+            Научная основа Medical Mind
           </h2>
+
+          <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
+            Наши алгоритмы опираются на данные биохимических исследований и актуальные
+            санитарные нормы РФ. Приложение создано при участии врачей, нутрициологов и
+            специалистов по геймификации.
+          </p>
 
           <div className="grid md:grid-cols-3 gap-8 mt-12">
             {[
               {
-                icon: Atom,
-                emoji: "🧬",
-                title: "Достоверные данные",
-                description: "Алгоритмы основаны на данных биомониторинга и подтверждённых исследованиях, а рекомендации — на нормах СанПиН РФ и стандартах ВОЗ.",
+                icon: ShieldCheck,
+                title: "Научная достоверность",
+                description: "Все данные проверены специалистами",
               },
               {
                 icon: Users,
-                emoji: "👩‍⚕️",
                 title: "Экспертная команда",
-                description: "Приложение создано при участии врачей, нутрициологов и инженеров здоровья.",
+                description: "Врачи и нутрициологи в разработке",
               },
               {
-                icon: ShieldCheck,
-                emoji: "🎮",
-                title: "Наука в игровом формате",
-                description: "Мы перевели научные данные в понятные квесты, чтобы путь к балансу был простым и мотивирующим ⚡",
+                icon: Atom,
+                title: "Актуальные нормы",
+                description: "СанПиН РФ и рекомендации ВОЗ",
               },
             ].map((item, index) => {
               const Icon = item.icon;
