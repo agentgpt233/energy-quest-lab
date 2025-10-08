@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Gift, Zap } from "lucide-react";
-import heroPhone from "@/assets/hero-phone.jpg";
+import heroPhone from "@/assets/hero-phone.png";
 import { useState } from "react";
 import { DownloadModal } from "./DownloadModal";
 
