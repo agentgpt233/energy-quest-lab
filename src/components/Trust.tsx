@@ -22,7 +22,7 @@ export const Trust = () => {
 
           <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
             Мы объединили биомониторинг, нутрициологию и игровые механики,
-            чтобы сделать заботу о организме понятной, научной и увлекательной.
+            чтобы сделать заботу об организме понятной, научной и увлекательной.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 mt-12">

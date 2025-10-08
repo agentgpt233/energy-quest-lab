@@ -1,9 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Zap, Lock } from "lucide-react";
+import { useState } from "react";
+import { DownloadModal } from "./DownloadModal";
 
 export const Footer = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <footer className="py-16 bg-gradient-to-b from-background to-secondary/30">
+    <>
+      <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <footer className="py-16 bg-gradient-to-b from-background to-secondary/30">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <div className="space-y-4 animate-fade-in">
@@ -19,6 +25,7 @@ export const Footer = () => {
           <div className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
             <Button
               size="lg"
+              onClick={() => setIsModalOpen(true)}
               className="bg-primary hover:bg-primary/90 text-white text-lg px-10 py-6 shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
               <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
@@ -42,5 +49,6 @@ export const Footer = () => {
         </div>
       </div>
     </footer>
+    </>
   );
 };
