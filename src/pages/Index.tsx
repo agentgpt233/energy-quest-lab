@@ -1,7 +1,6 @@
 import { ProgressBar } from "@/components/ProgressBar";
 import { StickyCTA } from "@/components/StickyCTA";
 import { Hero } from "@/components/Hero";
-import { PainPoints } from "@/components/PainPoints";
 import { WhyItWorks } from "@/components/WhyItWorks";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Testimonials } from "@/components/Testimonials";
@@ -16,7 +15,6 @@ const Index = () => {
       <ProgressBar />
       <StickyCTA />
       <Hero />
-      <PainPoints />
       <WhyItWorks />
       <HowItWorks />
       <Testimonials />
