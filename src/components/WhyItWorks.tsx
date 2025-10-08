@@ -8,8 +8,8 @@ const features = [
   },
   {
     icon: Apple,
-    title: "Фокус на восполнении, а не ограничении",
-    description: "Мы концентрируемся на том, чтобы вернуть организму недостающие нутриенты, без диет и подсчёта.",
+    title: "Баланс нутриентов — источник энергии",
+    description: "Дефицит даже одного витамина снижает эффективность сотен процессов. Мы помогаем восстановить этот баланс.",
   },
   {
     icon: Beaker,
@@ -34,7 +34,7 @@ export const WhyItWorks = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Научная основа Medical Mind
+            Почему это работает
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Мы объединили научную точность и игровую механику, чтобы забота о себе
