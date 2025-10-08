@@ -1,4 +1,5 @@
 import { Camera, FileText, Gift } from "lucide-react";
+import appScreenshot from "@/assets/app-screenshot.png";
 
 const steps = [
   {
@@ -31,34 +32,53 @@ export const HowItWorks = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 max-w-5xl mx-auto">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            return (
-              <div key={step.number} className="flex items-center gap-4 w-full md:w-auto">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 max-w-6xl mx-auto">
+          {/* Phone mockup on the left */}
+          <div className="flex-shrink-0 animate-fade-in">
+            <div className="relative w-[280px] h-[570px]">
+              {/* Phone frame */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800 rounded-[3rem] shadow-2xl p-3">
+                <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden">
+                  <img 
+                    src={appScreenshot} 
+                    alt="Energy Quest App Screenshot" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              {/* Phone notch */}
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-gray-900 rounded-b-3xl z-10"></div>
+            </div>
+          </div>
+
+          {/* Steps on the right */}
+          <div className="flex flex-col gap-8 flex-1">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              return (
                 <div
-                  className="flex-shrink-0 w-full md:w-64 text-center animate-fade-in"
+                  key={step.number}
+                  className="flex items-start gap-4 animate-fade-in"
                   style={{ animationDelay: `${index * 0.15}s` }}
                 >
-                  <div className="relative inline-block mb-6">
-                    <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Icon className="w-10 h-10 text-primary" />
+                  <div className="relative flex-shrink-0">
+                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="w-8 h-8 text-primary" />
                     </div>
-                    <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-accent text-foreground font-bold flex items-center justify-center text-sm shadow-lg">
+                    <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-accent text-foreground font-bold flex items-center justify-center text-xs shadow-lg">
                       {step.number}
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground">{step.description}</p>
+                  <div className="flex-1 pt-2">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-muted-foreground">{step.description}</p>
+                  </div>
                 </div>
-                {index < steps.length - 1 && (
-                  <div className="hidden md:block flex-shrink-0 w-12 h-0.5 bg-gradient-to-r from-primary to-accent" />
-                )}
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
 
         <p className="text-center text-lg text-muted-foreground mt-12 animate-fade-in">
