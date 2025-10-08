@@ -10,13 +10,13 @@ export const Hero = () => {
   return (
     <>
     <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/30 to-primary/5">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-secondary/30 to-primary/5">
       {/* Floating particles */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {["Ca", "Mg", "Zn", "Fe", "K", "Na"].map((element, i) => (
           <div
             key={element}
-            className="absolute text-primary/20 font-bold text-2xl animate-float"
+            className="absolute text-primary/20 font-bold text-2xl animate-float hidden sm:block"
             style={{
               left: `${15 + i * 15}%`,
               top: `${20 + (i % 3) * 25}%`,
@@ -28,7 +28,7 @@ export const Hero = () => {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 py-20 relative z-10">
+      <div className="container mx-auto px-4 py-20 relative z-10 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left content */}
           <div className="space-y-8 animate-fade-in">
@@ -39,24 +39,24 @@ export const Hero = () => {
               </span>
             </div>
 
-            <h1 className="text-4xl lg:text-5xl font-bold leading-tight text-foreground">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground">
               Закрой дефицит нутриентов{" "}
               <span className="text-primary">верни энергию дня</span> ⚡
             </h1>
 
             <div className="space-y-3 text-base lg:text-lg text-muted-foreground leading-relaxed">
-              <p>📸 Сфотографируй еду - приложение рассчитает и даст квест дня</p>
+              <p>📸 Сфотографируй еду - приложение рассчитает и сразу даст квест дня</p>
               <p>📋 Каждый квест строится по нормам СанПин РФ с поправкой на твои данные</p>
-              <p>🎮 Игра выстраивает полезную привычку, а результат приходит сам</p>
+              <p>🎮 Игра выстраивает полезную привычку, а результат заметен уже через 7 дней</p>
             </div>
 
             <Button
               size="lg"
               onClick={() => setIsModalOpen(true)}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in group"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in group w-full sm:w-auto"
             >
               <Gift className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-              Начать бесплатно и открыть бонус-сундук энергии
+              <span className="break-words">Начать бесплатно и открыть бонус-сундук энергии</span>
             </Button>
 
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
