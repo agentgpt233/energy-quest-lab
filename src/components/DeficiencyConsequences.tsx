@@ -27,11 +27,6 @@ const consequences = [
     description: "Трудности с запоминанием информации",
   },
   {
-    icon: TrendingDown,
-    title: "Низкая физическая активность",
-    description: "Замедленный рост и физическое развитие",
-  },
-  {
     icon: Battery,
     title: "Снижение мотивации",
     description: "Мало энергии и выносливости",
@@ -52,11 +47,11 @@ export const DeficiencyConsequences = () => {
             Последствия дефицита
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Дефицит витаминов и минералов в организме - главная причина снижения энергии и мотивации
+            Дефицит витаминов и минералов в организме - одна из главных причин снижения энергии и мотивации
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {consequences.map((consequence, index) => {
             const Icon = consequence.icon;
             return (
