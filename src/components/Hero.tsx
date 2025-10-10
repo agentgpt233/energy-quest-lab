@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Gift, Zap } from "lucide-react";
+import { Gift, Zap, TrendingDown, HeartCrack, BrainCog } from "lucide-react";
 import heroPhone from "@/assets/hero-phone.png";
 import { useState } from "react";
 import { DownloadModal } from "./DownloadModal";
@@ -44,10 +44,19 @@ export const Hero = () => {
               <span className="text-primary">питательных веществ уже сегодня</span> ⚡
             </h1>
 
-            <div className="space-y-3 text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-full">
-              <p className="break-words">📸 Сфотографируй еду - приложение рассчитает и сразу даст квест дня</p>
-              <p className="break-words">📋 Каждый квест строится по нормам СанПин РФ с поправкой на твои данные</p>
-              <p className="break-words">🎮 Игра выстраивает полезную привычку, а результат заметен уже через 7 дней</p>
+            <div className="space-y-4 text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-full">
+              <div className="flex items-start gap-3">
+                <TrendingDown className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                <p className="break-words">Высокий уровень утомляемости, нет жизнерадостности</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <HeartCrack className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                <p className="break-words">Повышенное чувство тревоги и напряжения</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <BrainCog className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                <p className="break-words">Проблемы с концентрацией и мотивацией</p>
+              </div>
             </div>
 
             <Button

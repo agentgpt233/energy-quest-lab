@@ -22,11 +22,6 @@ const consequences = [
     description: "Раздражительность и агрессия",
   },
   {
-    icon: HelpCircle,
-    title: "Проблемы с памятью",
-    description: "Трудности с запоминанием информации",
-  },
-  {
     icon: Battery,
     title: "Снижение мотивации",
     description: "Мало энергии и выносливости",
