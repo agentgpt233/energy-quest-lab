@@ -52,7 +52,7 @@ export const DeficiencyConsequences = () => {
             Последствия дефицита
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Последствия дефицита витаминов и минералов для организма
+            Дефицит витаминов и минералов в организме - главная причина снижения энергии и мотивации
           </p>
         </div>
 

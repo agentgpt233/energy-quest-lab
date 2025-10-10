@@ -41,7 +41,7 @@ export const Hero = () => {
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground break-words">
               Закрой дефицит нутриентов{" "}
-              <span className="text-primary">верни энергию дня</span> ⚡
+              <span className="text-primary">верни энергию дня уже сегодня</span> ⚡
             </h1>
 
             <div className="space-y-3 text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-full">
