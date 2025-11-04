@@ -6,7 +6,7 @@ import { DownloadModal } from "./DownloadModal";
 export const StickyCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [ctaText, setCtaText] = useState("Получить бонус-сундук");
+  const [ctaText, setCtaText] = useState("Восстановить энергию дня");
   const [icon, setIcon] = useState<React.ReactNode>(<Gift className="w-4 h-4" />);
 
   useEffect(() => {
@@ -17,13 +17,13 @@ export const StickyCTA = () => {
       setIsVisible(scrollPosition > windowHeight * 0.3);
 
       if (scrollPosition > windowHeight * 3) {
-        setCtaText("Открыть сундук энергии");
+        setCtaText("Восстановить энергию дня");
         setIcon(<Sparkles className="w-4 h-4" />);
       } else if (scrollPosition > windowHeight * 1.5) {
         setCtaText("Начать бесплатно");
         setIcon(<Zap className="w-4 h-4" />);
       } else {
-        setCtaText("Получить бонус-сундук");
+        setCtaText("Восстановить энергию дня");
         setIcon(<Gift className="w-4 h-4" />);
       }
     };

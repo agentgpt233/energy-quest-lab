@@ -18,7 +18,7 @@ export const DownloadModal = ({ isOpen, onClose }: DownloadModalProps) => {
             </div>
           </div>
           <DialogTitle className="text-center text-2xl">
-            🎁 Бонус-сундук энергии
+            🎁 Восстанови энергию дня
           </DialogTitle>
         </DialogHeader>
         

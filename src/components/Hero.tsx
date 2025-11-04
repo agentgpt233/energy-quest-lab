@@ -65,7 +65,7 @@ export const Hero = () => {
               className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm sm:text-base lg:text-lg px-4 sm:px-8 py-4 sm:py-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in group w-full sm:w-auto max-w-full whitespace-normal leading-snug"
             >
               <Gift className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:rotate-12 transition-transform flex-shrink-0" />
-              <span className="break-words">Начать бесплатно и открыть бонус-сундук энергии</span>
+              <span className="break-words">Начать бесплатно и восстановить энергию дня</span>
             </Button>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 text-sm text-muted-foreground">
@@ -77,7 +77,7 @@ export const Hero = () => {
                   />
                 ))}
               </div>
-              <span className="break-words">Более 3,000 человек открыли свой сундук сегодня 🔥</span>
+              <span className="break-words">Более 3,000 человек восстановили энергию сегодня 🔥</span>
             </div>
           </div>
 
