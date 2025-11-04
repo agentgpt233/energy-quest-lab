@@ -32,7 +32,7 @@ export const DownloadModal = ({ isOpen, onClose }: DownloadModalProps) => {
             <Button 
               size="lg" 
               className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-6"
-              onClick={() => window.open('https://apps.apple.com', '_blank')}
+              onClick={() => window.open('exp://hwpetlo-anonymous-8081.exp.direct', '_blank')}
             >
               <Apple className="w-5 h-5 mr-2" />
               Скачать iOS
@@ -41,7 +41,7 @@ export const DownloadModal = ({ isOpen, onClose }: DownloadModalProps) => {
             <Button 
               size="lg" 
               className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-6"
-              onClick={() => window.open('https://play.google.com', '_blank')}
+              onClick={() => window.open('exp://hwpetlo-anonymous-8081.exp.direct', '_blank')}
             >
               <Play className="w-5 h-5 mr-2" />
               Скачать Android
