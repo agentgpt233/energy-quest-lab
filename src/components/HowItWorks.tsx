@@ -1,24 +1,30 @@
-import { Camera, FileText, Gift } from "lucide-react";
+import { Activity, ClipboardList, Calculator, Target } from "lucide-react";
 import howItWorksPhone from "@/assets/how-it-works-phone.png";
 
 const steps = [
   {
-    icon: Camera,
+    icon: Activity,
     number: "1",
-    title: "Сфотографируй еду",
-    description: "Просто сделай фото блюда",
+    title: "Мониторинг",
+    description: "Фотографируй еду — алгоритм анализирует состав",
   },
   {
-    icon: FileText,
+    icon: ClipboardList,
     number: "2",
-    title: "Раскрой скрытые дефициты",
-    description: "Получи квест на день и рекомендации по питанию",
+    title: "Учёт",
+    description: "Отслеживаем все нутриенты и калории автоматически",
   },
   {
-    icon: Gift,
+    icon: Calculator,
     number: "3",
-    title: "Закрывай дефициты — открывай сундуки",
-    description: "Играй и получай награды",
+    title: "Расчёт",
+    description: "Определяем твои дефициты и избытки",
+  },
+  {
+    icon: Target,
+    number: "4",
+    title: "Коррекция",
+    description: "Получаешь персональные рекомендации по питанию",
   },
 ];
 
@@ -30,6 +36,9 @@ export const HowItWorks = () => {
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Как это работает
           </h2>
+          <p className="text-xl text-muted-foreground">
+            Всё гениальное просто
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -110,9 +119,6 @@ export const HowItWorks = () => {
           </div>
         </div>
 
-        <p className="text-center text-lg text-muted-foreground mt-12 animate-fade-in">
-          Всё просто. Один шаг — и твой уровень энергии растёт.
-        </p>
       </div>
     </section>
   );
