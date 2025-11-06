@@ -46,6 +46,12 @@ export const DeficiencyConsequences = () => {
           </p>
         </div>
 
+        <div className="max-w-[700px] mx-auto text-center mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+          <p className="text-lg text-foreground leading-relaxed" style={{ fontSize: '1.15em' }}>
+            Каждый день вы чувствуете, что организм работает не на полную мощность. Вроде бы ничего серьёзного, но... эта усталость накапливается, мотивация падает, и даже простые задачи даются с трудом. Знакомо?
+          </p>
+        </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {consequences.map((consequence, index) => {
             const Icon = consequence.icon;

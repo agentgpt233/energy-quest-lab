@@ -59,6 +59,52 @@ export const Trust = () => {
               );
             })}
           </div>
+
+          {/* Certification Section */}
+          <div className="mt-16 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
+              📜 Подтверждено документально
+            </h3>
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+              Medical Mind — зарегистрированная программа для ЭВМ с официальным свидетельством. 
+              <br />
+              Все методики прошли клиническую апробацию в ФБУН «Новосибирский НИИ гигиены» Роспотребнадзора.
+            </p>
+
+            {/* Certificate Placeholder */}
+            <div className="max-w-[300px] mx-auto mb-8">
+              <div className="border-2 border-border rounded-lg p-8 bg-card shadow-md hover:shadow-lg transition-shadow">
+                <div className="text-6xl text-center mb-4">📄</div>
+                <p className="text-sm text-center text-muted-foreground leading-relaxed">
+                  Свидетельство о регистрации программы ЭВМ Medical Mind
+                </p>
+              </div>
+            </div>
+
+            {/* Partner Logos */}
+            <div className="flex flex-wrap justify-center items-center gap-8 mb-6">
+              {[
+                { icon: "🏛️", label: "СанПиН РФ" },
+                { icon: "🌍", label: "ВОЗ" },
+                { icon: "🇪🇺", label: "EFSA" },
+                { icon: "🔬", label: "НИИ Гигиены" },
+              ].map((partner, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center justify-center w-20 h-20 grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100"
+                  style={{ animationDelay: `${index * 0.1 + 0.4}s` }}
+                >
+                  <div className="text-4xl mb-1">{partner.icon}</div>
+                  <p className="text-xs text-muted-foreground text-center">{partner.label}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-sm text-muted-foreground text-center max-w-2xl mx-auto leading-relaxed">
+              Методики основаны на более чем 200 клинических исследованиях 
+              в области нутрициологии и профилактической медицины
+            </p>
+          </div>
         </div>
       </div>
     </section>

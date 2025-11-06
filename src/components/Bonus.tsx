@@ -62,6 +62,16 @@ export const Bonus = () => {
             </span>
           </p>
 
+          <div className="max-w-2xl mx-auto mb-6 px-4">
+            <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-accent rounded-xl p-5 sm:p-6">
+              <p className="text-base sm:text-lg font-semibold text-orange-900 text-center leading-relaxed">
+                ⚡ Каждый день промедления — это день с дефицитом энергии. 
+                <br className="hidden sm:block" />
+                Начни восстановление прямо сейчас ⚡
+              </p>
+            </div>
+          </div>
+
           <Button
             size="lg"
             onClick={() => setIsModalOpen(true)}
