@@ -1,7 +1,16 @@
 import { Atom, ShieldCheck, Users } from "lucide-react";
+import { useState } from "react";
+import { CertificateModal } from "./CertificateModal";
 
 export const Trust = () => {
+  const [isCertificateOpen, setIsCertificateOpen] = useState(false);
+
   return (
+    <>
+      <CertificateModal 
+        isOpen={isCertificateOpen} 
+        onClose={() => setIsCertificateOpen(false)} 
+      />
     <section className="py-24 bg-gradient-to-b from-secondary/30 to-background relative overflow-hidden">
       {/* Background molecule decoration */}
       <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
@@ -73,12 +82,18 @@ export const Trust = () => {
 
             {/* Certificate Placeholder */}
             <div className="max-w-[300px] mx-auto mb-8">
-              <div className="border-2 border-border rounded-lg p-8 bg-card shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-6xl text-center mb-4">📄</div>
-                <p className="text-sm text-center text-muted-foreground leading-relaxed">
+              <button
+                onClick={() => setIsCertificateOpen(true)}
+                className="w-full border-2 border-border rounded-lg p-8 bg-card shadow-md hover:shadow-xl transition-all hover:scale-105 cursor-pointer group"
+              >
+                <div className="text-6xl text-center mb-4 group-hover:scale-110 transition-transform">📄</div>
+                <p className="text-sm text-center text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">
                   Свидетельство о регистрации программы ЭВМ Medical Mind
                 </p>
-              </div>
+                <p className="text-xs text-center text-primary mt-2 font-medium">
+                  Нажмите для просмотра
+                </p>
+              </button>
             </div>
 
             {/* Partner Logos */}
@@ -108,5 +123,6 @@ export const Trust = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
