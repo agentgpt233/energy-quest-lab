@@ -1,6 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Gift, Apple, Play } from "lucide-react";
+import { Apple, Play } from "lucide-react";
+import logoImage from "@/assets/medical-mind-logo.png";
 
 interface DownloadModalProps {
   isOpen: boolean;
@@ -13,9 +14,11 @@ export const DownloadModal = ({ isOpen, onClose }: DownloadModalProps) => {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <div className="flex justify-center mb-4">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center animate-scale-in">
-              <Gift className="w-10 h-10 text-white" />
-            </div>
+            <img 
+              src={logoImage} 
+              alt="Medical Mind" 
+              className="w-24 h-24 animate-scale-in"
+            />
           </div>
           <DialogTitle className="text-center text-2xl">
             🎁 Восстанови энергию дня
