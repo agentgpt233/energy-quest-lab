@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Gift, Zap, TrendingDown, HeartCrack, BrainCog } from "lucide-react";
 import heroPhone from "@/assets/hero-phone.png";
-import logoImage from "@/assets/medical-mind-logo.png";
+import brandingImage from "@/assets/medical-mind-branding.png";
 import { useState } from "react";
 import { DownloadModal } from "./DownloadModal";
 
@@ -34,9 +34,9 @@ export const Hero = () => {
           {/* Left content */}
           <div className="space-y-8 animate-fade-in w-full max-w-full overflow-hidden">
             <img 
-              src={logoImage} 
+              src={brandingImage} 
               alt="Medical Mind" 
-              className="w-32 sm:w-40 h-auto animate-scale-in"
+              className="w-48 sm:w-64 h-auto animate-scale-in"
             />
             
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full border border-accent/20">
