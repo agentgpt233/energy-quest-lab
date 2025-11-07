@@ -2,13 +2,16 @@ import { Button } from "@/components/ui/button";
 import { Zap, Lock } from "lucide-react";
 import { useState } from "react";
 import { DownloadModal } from "./DownloadModal";
+import { LegalModal } from "./LegalModal";
 
 export const Footer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
 
   return (
     <>
       <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <LegalModal isOpen={isLegalModalOpen} onClose={() => setIsLegalModalOpen(false)} />
       <footer className="py-16 bg-gradient-to-b from-background to-secondary/30">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center space-y-8">
@@ -41,10 +44,16 @@ export const Footer = () => {
             className="pt-8 border-t border-border text-sm text-muted-foreground animate-fade-in"
             style={{ animationDelay: "0.2s" }}
           >
-            <p>© 2025 Medical Mind. Все права защищены.</p>
+            <p>© 2025 ООО «ФармиКо». Все права защищены.</p>
             <p className="mt-2">
               Научно-игровое приложение для восстановления энергии через нутриенты
             </p>
+            <button
+              onClick={() => setIsLegalModalOpen(true)}
+              className="mt-4 text-xs text-muted-foreground hover:text-foreground hover:underline transition-colors"
+            >
+              Юридическая информация и реквизиты
+            </button>
           </div>
         </div>
       </div>
