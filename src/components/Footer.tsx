@@ -50,7 +50,7 @@ export const Footer = () => {
             </p>
             <button
               onClick={() => setIsLegalModalOpen(true)}
-              className="mt-4 text-xs text-muted-foreground hover:text-foreground hover:underline transition-colors"
+              className="mt-4 text-base text-primary hover:text-primary/80 hover:underline transition-colors font-medium"
             >
               Юридическая информация и реквизиты
             </button>

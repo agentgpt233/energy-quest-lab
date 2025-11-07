@@ -5,7 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Building2, MapPin, Mail, Phone, Globe, FileText } from "lucide-react";
+import { Building2, MapPin, Mail, Globe, FileText } from "lucide-react";
 
 interface LegalModalProps {
   isOpen: boolean;
@@ -49,7 +49,7 @@ export const LegalModal = ({ isOpen, onClose }: LegalModalProps) => {
             <ul className="space-y-2 text-sm">
               <li><strong>ИНН:</strong> 5433970294</li>
               <li><strong>КПП:</strong> 543301001</li>
-              <li><strong>ОГРН:</strong> [добавить позже]</li>
+              <li><strong>ОГРН:</strong> 1195476028736</li>
               <li><strong>ОКПО:</strong> 38952447</li>
               <li><strong>ОКВЭД:</strong> 46.38.2</li>
             </ul>
@@ -82,25 +82,15 @@ export const LegalModal = ({ isOpen, onClose }: LegalModalProps) => {
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-primary" />
-                <strong>Телефон:</strong>
-                <a 
-                  href="tel:+73832021909" 
-                  className="text-primary hover:underline"
-                >
-                  +7 (383) 202-19-09
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
                 <Globe className="w-4 h-4 text-primary" />
                 <strong>Сайт:</strong>
                 <a 
-                  href="https://medicalmind.ru" 
+                  href="https://energy-quest-lab.lovable.app" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-primary hover:underline"
                 >
-                  medicalmind.ru
+                  energy-quest-lab.lovable.app
                 </a>
               </li>
             </ul>
