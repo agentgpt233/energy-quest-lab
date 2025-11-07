@@ -87,6 +87,9 @@ export const LegalModal = ({ isOpen, onClose }: LegalModalProps) => {
               <li>
                 <strong>Товарный знак:</strong> Medical Mind
               </li>
+              <li>
+                <strong>Программное обеспечение:</strong> Medical Mind
+              </li>
             </ul>
           </div>
 
@@ -98,7 +101,7 @@ export const LegalModal = ({ isOpen, onClose }: LegalModalProps) => {
               <li><strong>КПП:</strong> 543301001</li>
               <li><strong>ОГРН:</strong> 1195476028736</li>
               <li><strong>ОКПО:</strong> 38952447</li>
-              <li><strong>ОКВЭД:</strong> 46.38.2</li>
+              <li><strong>ОКВЭД:</strong> 72.19</li>
             </ul>
           </div>
 
@@ -142,12 +145,12 @@ export const LegalModal = ({ isOpen, onClose }: LegalModalProps) => {
                 <Globe className="w-4 h-4 text-primary" />
                 <strong>Сайт:</strong>
                 <a 
-                  href="https://energy-quest-lab.lovable.app" 
+                  href="https://medicalmind.ru" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-primary hover:underline"
                 >
-                  energy-quest-lab.lovable.app
+                  medicalmind.ru
                 </a>
               </li>
             </ul>
