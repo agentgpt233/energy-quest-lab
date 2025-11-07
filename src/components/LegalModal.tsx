@@ -5,7 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Building2, MapPin, Mail, Globe, FileText } from "lucide-react";
+import { Building2, MapPin, Mail, Phone, Globe, FileText } from "lucide-react";
 
 interface LegalModalProps {
   isOpen: boolean;
@@ -75,10 +75,20 @@ export const LegalModal = ({ isOpen, onClose }: LegalModalProps) => {
                 <Mail className="w-4 h-4 text-primary" />
                 <strong>Email:</strong>
                 <a 
-                  href="mailto:support@medicalmind.ru" 
+                  href="mailto:farmico@list.ru" 
                   className="text-primary hover:underline"
                 >
-                  support@medicalmind.ru
+                  farmico@list.ru
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-primary" />
+                <strong>Телефон:</strong>
+                <a 
+                  href="tel:+73832021909" 
+                  className="text-primary hover:underline"
+                >
+                  +7 (383) 202-19-09
                 </a>
               </li>
               <li className="flex items-center gap-2">
