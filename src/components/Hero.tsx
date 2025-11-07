@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Gift, Zap, TrendingDown, HeartCrack, BrainCog } from "lucide-react";
 import heroPhone from "@/assets/hero-phone.png";
+import logoImage from "@/assets/medical-mind-logo.png";
 import { useState } from "react";
 import { DownloadModal } from "./DownloadModal";
 
@@ -32,6 +33,12 @@ export const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Left content */}
           <div className="space-y-8 animate-fade-in w-full max-w-full overflow-hidden">
+            <img 
+              src={logoImage} 
+              alt="Medical Mind" 
+              className="w-32 sm:w-40 h-auto animate-scale-in"
+            />
+            
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full border border-accent/20">
               <Zap className="w-4 h-4 text-accent" />
               <span className="text-sm font-medium text-foreground">
