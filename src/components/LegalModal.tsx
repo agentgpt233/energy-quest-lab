@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -6,60 +5,22 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Building2, MapPin, Mail, Phone, Globe, FileText } from "lucide-react";
-import { DocumentModal } from "./DocumentModal";
-import { PrivacyPolicyContent } from "./documents/PrivacyPolicyContent";
-import { TermsOfServiceContent } from "./documents/TermsOfServiceContent";
-import { PersonalDataConsentContent } from "./documents/PersonalDataConsentContent";
+import { Building2, MapPin, Mail, Phone, Globe, FileText, ExternalLink } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface LegalModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-type DocumentType = 'privacy' | 'terms' | 'consent' | null;
-
 export const LegalModal = ({ isOpen, onClose }: LegalModalProps) => {
-  const [activeDocument, setActiveDocument] = useState<DocumentType>(null);
+  const navigate = useNavigate();
 
-  const handleDocumentClick = (docType: DocumentType) => {
-    setActiveDocument(docType);
+  const handleDocumentClick = (path: string) => {
+    onClose();
+    navigate(path);
   };
 
-  const handleDocumentClose = () => {
-    setActiveDocument(null);
-  };
-
-  const getDocumentProps = () => {
-    switch (activeDocument) {
-      case 'privacy':
-        return {
-          title: 'Политика конфиденциальности',
-          content: <PrivacyPolicyContent />,
-          pdfPath: '/documents/privacy-policy.pdf'
-        };
-      case 'terms':
-        return {
-          title: 'Пользовательское соглашение',
-          content: <TermsOfServiceContent />,
-          pdfPath: '/documents/terms-of-service.pdf'
-        };
-      case 'consent':
-        return {
-          title: 'Согласие на обработку персональных данных',
-          content: <PersonalDataConsentContent />,
-          pdfPath: '/documents/personal-data-consent.pdf'
-        };
-      default:
-        return {
-          title: '',
-          content: <></>,
-          pdfPath: ''
-        };
-    }
-  };
-
-  const documentProps = getDocumentProps();
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
@@ -165,26 +126,29 @@ export const LegalModal = ({ isOpen, onClose }: LegalModalProps) => {
             <ul className="space-y-2 text-sm">
               <li>
                 <button
-                  onClick={() => handleDocumentClick('privacy')}
-                  className="text-primary hover:underline cursor-pointer text-left"
+                  onClick={() => handleDocumentClick('/privacy-policy')}
+                  className="text-primary hover:underline cursor-pointer text-left flex items-center gap-2 group"
                 >
                   Политика конфиденциальности
+                  <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => handleDocumentClick('terms')}
-                  className="text-primary hover:underline cursor-pointer text-left"
+                  onClick={() => handleDocumentClick('/terms-of-service')}
+                  className="text-primary hover:underline cursor-pointer text-left flex items-center gap-2 group"
                 >
                   Пользовательское соглашение
+                  <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => handleDocumentClick('consent')}
-                  className="text-primary hover:underline cursor-pointer text-left"
+                  onClick={() => handleDocumentClick('/personal-data-consent')}
+                  className="text-primary hover:underline cursor-pointer text-left flex items-center gap-2 group"
                 >
                   Согласие на обработку персональных данных
+                  <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </button>
               </li>
             </ul>
@@ -198,16 +162,6 @@ export const LegalModal = ({ isOpen, onClose }: LegalModalProps) => {
           </div>
         </div>
       </DialogContent>
-
-      {activeDocument && (
-        <DocumentModal
-          isOpen={!!activeDocument}
-          onClose={handleDocumentClose}
-          title={documentProps.title}
-          content={documentProps.content}
-          pdfPath={documentProps.pdfPath}
-        />
-      )}
     </Dialog>
   );
 };
