@@ -27,24 +27,25 @@ export const DownloadModal = ({ isOpen, onClose }: DownloadModalProps) => {
         
         <div className="space-y-6 py-4">
           <p className="text-center text-lg text-muted-foreground">
-            Скачай по ссылке и получи{" "}
-            <span className="text-primary font-bold">1000 Витакойнов</span> в подарок! 💎
+            ⚡ Каждый день промедления — это день с дефицитом энергии.
+            <br />
+            Начни восстановление прямо сейчас ⚡
           </p>
 
           <div className="space-y-3">
             <Button 
               size="lg" 
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-6"
-              onClick={() => window.open('exp://hwpetlo-anonymous-8081.exp.direct', '_blank')}
+              className="w-full bg-muted text-muted-foreground text-lg py-6 cursor-not-allowed"
+              disabled
             >
               <Apple className="w-5 h-5 mr-2" />
-              Скачать iOS
+              Скоро на iOS
             </Button>
 
             <Button 
               size="lg" 
               className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-6"
-              onClick={() => window.open('exp://hwpetlo-anonymous-8081.exp.direct', '_blank')}
+              onClick={() => window.open('https://www.rustore.ru/catalog/app/app.rork.nutritionapp', '_blank')}
             >
               <Play className="w-5 h-5 mr-2" />
               Скачать Android
