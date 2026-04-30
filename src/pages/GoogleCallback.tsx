@@ -20,9 +20,8 @@ const GoogleCallback = () => {
         }
 
         if (code) {
-          // Process authentication code here
-          // This will be implemented when authentication is set up
-          console.log('Google auth code received:', code);
+          // Authorization code must be exchanged server-side (e.g., via an Edge Function).
+          // Do NOT log or process it in the browser.
           navigate('/');
         } else {
           navigate('/?error=no_code');
