@@ -96,10 +96,10 @@ export const LegalModal = ({ isOpen, onClose }: LegalModalProps) => {
                 <Phone className="w-4 h-4 text-primary" />
                 <strong>Телефон:</strong>
                 <a 
-                  href="tel:+73832021909" 
+                  href="tel:+79133724248"
                   className="text-primary hover:underline"
                 >
-                  +7 (383) 202-19-09
+                  +7 913 372-42-48
                 </a>
               </li>
               <li className="flex items-center gap-2">

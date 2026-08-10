@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build && node scripts/postbuild.mjs",
     "build:dev": "vite build --mode development && node scripts/postbuild.mjs",
+    "docs:pdf": "node scripts/generate-legal-pdfs.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

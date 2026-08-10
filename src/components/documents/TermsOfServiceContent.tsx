@@ -5,6 +5,7 @@ export const TermsOfServiceContent = () => (
         ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ
       </h2>
       <p className="text-lg text-[#666]">Мобильное приложение Medical Mind</p>
+      <p className="text-sm text-[#666] mt-2">Редакция от 10.08.2026 · Действует с 10.08.2026</p>
     </div>
 
     <section className="mb-8">
@@ -15,7 +16,7 @@ export const TermsOfServiceContent = () => (
         <ul className="list-none space-y-1 pl-4">
           <li>• ИНН: 5433970294, ОГРН: 1195476028736</li>
           <li>• Email: farmico@list.ru</li>
-          <li>• Телефон: +7 (383) 202-19-09</li>
+          <li>• Телефон: +7 913 372-42-48</li>
         </ul>
       </div>
     </section>
@@ -109,7 +110,7 @@ export const TermsOfServiceContent = () => (
     <section className="mb-8">
       <h3 className="text-xl font-semibold text-[#4CAF50] mb-3">10. ТЕХПОДДЕРЖКА</h3>
       <p>Email: farmico@list.ru</p>
-      <p>Телефон: +7 (383) 202-19-09</p>
+      <p>Телефон: +7 913 372-42-48</p>
       <p>Ответ: до 72 часов (подписчики: 24 часа)</p>
     </section>
 
@@ -124,7 +125,7 @@ export const TermsOfServiceContent = () => (
       <p>ООО «ФармиКо»</p>
       <p>Адрес: 630559, Новосибирская область, р.п. Кольцово, д. 12, оф.2</p>
       <p>Email: farmico@list.ru</p>
-      <p>Телефон: +7 (383) 202-19-09</p>
+      <p>Телефон: +7 913 372-42-48</p>
     </section>
 
     <div className="text-center text-[#666] pt-6 border-t">

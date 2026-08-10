@@ -5,6 +5,7 @@ export const PersonalDataConsentContent = () => (
         СОГЛАСИЕ НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ
       </h2>
       <p className="text-lg text-[#666]">Мобильное приложение Medical Mind</p>
+      <p className="text-sm text-[#666] mt-2">Редакция от 10.08.2026 · Действует с 10.08.2026</p>
     </div>
 
     <section className="mb-8">
@@ -13,7 +14,7 @@ export const PersonalDataConsentContent = () => (
       <p>ИНН: 5433970294, КПП: 543301001, ОГРН: 1195476028736</p>
       <p>Адрес: 630559, Новосибирская область, р.п. Кольцово, д. 12, оф.2</p>
       <p>Email: farmico@list.ru</p>
-      <p>Телефон: +7 (383) 202-19-09</p>
+      <p>Телефон: +7 913 372-42-48</p>
     </section>
 
     <section className="mb-8">
@@ -115,7 +116,7 @@ export const PersonalDataConsentContent = () => (
       <h3 className="text-xl font-semibold text-[#4CAF50] mb-3">КОНТАКТЫ:</h3>
       <p>ООО «ФармиКо»</p>
       <p>farmico@list.ru</p>
-      <p>+7 (383) 202-19-09</p>
+      <p>+7 913 372-42-48</p>
       <div className="mt-4">
         <p className="font-semibold">РОСКОМНАДЗОР:</p>
         <p>rsoc@rkn.gov.ru</p>

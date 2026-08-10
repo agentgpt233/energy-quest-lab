@@ -5,6 +5,7 @@ export const PrivacyPolicyContent = () => (
         ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ
       </h2>
       <p className="text-lg text-[#666]">Мобильное приложение Medical Mind</p>
+      <p className="text-sm text-[#666] mt-2">Редакция от 10.08.2026 · Действует с 10.08.2026</p>
     </div>
 
     <section className="mb-8">
@@ -19,7 +20,7 @@ export const PrivacyPolicyContent = () => (
           <li>• ИНН: 5433970294, КПП: 543301001, ОГРН: 1195476028736</li>
           <li>• Адрес: 630559, Новосибирская область, р.п. Кольцово, д. 12, оф.2</li>
           <li>• Email: farmico@list.ru</li>
-          <li>• Телефон: +7 (383) 202-19-09</li>
+          <li>• Телефон: +7 913 372-42-48</li>
         </ul>
       </div>
     </section>
@@ -92,7 +93,7 @@ export const PrivacyPolicyContent = () => (
         <li>✓ Отзыв согласия</li>
         <li>✓ Жалоба в Роскомнадзор</li>
       </ul>
-      <p className="mt-3">Обращайтесь: farmico@list.ru, +7 (383) 202-19-09</p>
+      <p className="mt-3">Обращайтесь: farmico@list.ru, +7 913 372-42-48</p>
     </section>
 
     <section className="mb-8">
@@ -104,7 +105,7 @@ export const PrivacyPolicyContent = () => (
       <h3 className="text-xl font-semibold text-[#4CAF50] mb-3">9. КОНТАКТЫ</h3>
       <p>ООО «ФармиКо»</p>
       <p>Email: farmico@list.ru</p>
-      <p>Телефон: +7 (383) 202-19-09</p>
+      <p>Телефон: +7 913 372-42-48</p>
     </section>
 
     <div className="text-center text-[#666] pt-6 border-t">
