@@ -22,7 +22,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/terms" element={<TermsOfService />} />
           <Route path="/personal-data-consent" element={<PersonalDataConsent />} />
           <Route path="/delete-account" element={<DeleteAccount />} />
           <Route path="/auth/google/callback" element={<GoogleCallback />} />
