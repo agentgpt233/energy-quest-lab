@@ -1,11 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Medical Mind — Закрой дефициты нутриентов, почувствуй энергию дня</title>
-    <meta name="description" content="Научно-игровое приложение для восстановления энергии.
-Сфотографируй еду - приложение рассчитает и даст квест дня.">
+    <title>Medical Mind — узнайте дефициты витаминов по фото еды | ИИ-анализ питания</title>
+    <meta name="description" content="Сфотографируйте блюдо — приложение за секунды рассчитает КБЖУ и 30+ нутриентов, найдёт скрытые дефициты витаминов и минералов и составит персональный план коррекции. Методика НИИ гигиены Роспотребнадзора. Патент РФ.">
     <meta name="author" content="Medical Mind" />
     <meta name="google-site-verification" content="UsNIGzLPIH0ymNAgx1A-pNP1cFJVjtI8gWE58xXFx2s" />
     <meta name="google-site-verification" content="cKOB9b6AjoqdK4jb4Q-Qz4dKs-Ek67HKbVRmOFdrJtw" />
@@ -21,31 +20,68 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-    <meta property="og:title" content="Medical Mind — Закрой дефициты нутриентов, почувствуй энергию дня">
-    <meta name="twitter:title" content="Medical Mind — Закрой дефициты нутриентов, почувствуй энергию дня">
-    <meta property="og:description" content="Научно-игровое приложение для восстановления энергии.
-Сфотографируй еду - приложение рассчитает и даст квест дня.">
-    <meta name="twitter:description" content="Научно-игровое приложение для восстановления энергии.
-Сфотографируй еду - приложение рассчитает и даст квест дня.">
+    <meta property="og:title" content="Medical Mind — узнайте дефициты витаминов по фото еды | ИИ-анализ питания">
+    <meta name="twitter:title" content="Medical Mind — узнайте дефициты витаминов по фото еды | ИИ-анализ питания">
+    <meta property="og:description" content="Сфотографируйте блюдо — приложение за секунды рассчитает КБЖУ и 30+ нутриентов, найдёт скрытые дефициты витаминов и минералов и составит персональный план коррекции. Методика НИИ гигиены Роспотребнадзора. Патент РФ.">
+    <meta name="twitter:description" content="Сфотографируйте блюдо — приложение за секунды рассчитает КБЖУ и 30+ нутриентов, найдёт скрытые дефициты витаминов и минералов и составит персональный план коррекции. Методика НИИ гигиены Роспотребнадзора. Патент РФ.">
     <link rel="icon" type="image/x-icon" href="https://storage.googleapis.com/gpt-engineer-file-uploads/AXMINhD2o9b9eVcFwabcLfyhSVj1/uploads/1759942626881-ГолубойБелыйЦентр — копия.png">
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
+        /*
+          Счётчик и вебвизор сохранены полностью, изменён только момент загрузки tag.js.
+          Раньше тег грузился синхронно в head и занимал главный поток на ~10 с при
+          4x CPU-throttling (Lighthouse mobile) — это была основная часть TBT.
+          Теперь очередь ym() создаётся сразу (все вызовы init и reachGoal копятся
+          в ym.a и проигрываются при загрузке тега), а сам tag.js подключается
+          после отрисовки страницы либо при первом действии пользователя.
+        */
         (function(m,e,t,r,i,k,a){
             m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
             m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+
+            var loaded = false;
+            var load = function(){
+                if (loaded) { return; }
+                loaded = true;
+                for (var j = 0; j < e.scripts.length; j++) { if (e.scripts[j].src === r) { return; } }
+                k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
+            };
+
+            var schedule = function(){ setTimeout(load, 1500); };
+            if (e.readyState === 'complete') { schedule(); }
+            else { m.addEventListener('load', schedule); }
+
+            /* любое действие пользователя подключает счётчик немедленно */
+            ['click','touchstart','keydown','scroll'].forEach(function(ev){
+                m.addEventListener(ev, load, { once: true, passive: true });
+            });
         })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105977143', 'ym');
         ym(105977143, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
     </script>
     <!-- /Yandex.Metrika counter -->
-    <script type="module" crossorigin src="/assets/index-BmR8bdZt.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-C6sRnz4z.css">
+    <script type="module" crossorigin src="/assets/index-CEY6N2np.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BJHIeDke.css">
   </head>
 
   <body>
     <noscript><div><img src="https://mc.yandex.ru/watch/105977143" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript>
+      <div style="max-width:680px; margin:0 auto; padding:40px 20px; font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height:1.6; color:#16212b;">
+        <h1 style="font-size:28px; line-height:1.2;">Medical Mind — узнайте, чего не хватает вашему организму, по фото еды</h1>
+        <p>
+          Сфотографируйте блюдо — приложение за секунды рассчитает КБЖУ и 30+ нутриентов,
+          найдёт скрытые дефициты витаминов и минералов и составит персональный план коррекции.
+          Методика разработана совместно с ФБУН «Новосибирский НИИ гигиены» Роспотребнадзора,
+          патент РФ № 2867260.
+        </p>
+        <p>
+          <a href="https://www.rustore.ru/catalog/app/app.rork.nutritionapp">Скачать в RuStore — бесплатно</a>
+          &nbsp;·&nbsp;
+          <a href="/invest">Инвесторам</a>
+        </p>
+      </div>
+    </noscript>
     <div id="root">
       <div style="min-height:100vh; display:flex; align-items:center; justify-content:center; font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#6b7280;">
         Загрузка…

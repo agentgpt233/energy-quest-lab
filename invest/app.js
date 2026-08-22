@@ -106,6 +106,7 @@ const METRICS = {
   ],
 
   /* --- использование средств (сумма долей должна давать 100 %) --- */
+  fundsNote: 'Базовый план — структура уточняется по итогам раунда.',
   funds: [
     { label: 'Команда',                        percent: 40, amount: 10000000, color: '#0a6fb3' },
     { label: 'Маркетинг',                      percent: 28, amount:  7000000, color: '#0f9ee6' },
@@ -268,6 +269,9 @@ const METRICS = {
     acc += len;
   });
   $('#donutSegments').innerHTML = segs;
+
+  var fundsNoteEl = $('#fundsNote');
+  if (fundsNoteEl) { fundsNoteEl.textContent = METRICS.fundsNote; }
 
   $('#fundsList').innerHTML = METRICS.funds.map(function (f) {
     return '<li class="fund">' +
