@@ -81,10 +81,8 @@ export const Hero = () => {
               </span>
             </div>
 
-            <h1
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground break-words rise"
-              style={{ "--rise-delay": "120ms" } as React.CSSProperties}
-            >
+            {/* Заголовок — LCP-элемент: рисуется сразу, без анимации появления */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground break-words">
               Узнайте, чего не хватает вашему организму, —{" "}
               <span className="text-primary">по фото еды</span>
             </h1>
