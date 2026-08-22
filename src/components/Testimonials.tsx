@@ -23,23 +23,21 @@ const testimonials = [
 
 export const Testimonials = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-secondary/30 to-background">
+    <section className="section-y bg-gradient-to-b from-secondary/30 to-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Что говорят пользователи
-          </h2>
+        <div className="section-head text-center">
+          <h2 className="text-foreground">Что говорят пользователи</h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {/* Мобильный — свайп со scroll-snap, десктоп — те же 3 в ряд */}
+        <div className="swipe-row max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="p-8 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="p-4 sm:p-8 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg">
                   {testimonial.author.charAt(0)}
                 </div>
                 <div className="flex-1">
@@ -50,10 +48,10 @@ export const Testimonials = () => {
                   </div>
                 </div>
               </div>
-              <p className="text-base text-foreground mb-4 leading-relaxed">
+              <p className="text-[13.5px] sm:text-base text-foreground mb-3 leading-relaxed">
                 "{testimonial.text}"
               </p>
-              <div className="border-t border-border pt-4">
+              <div className="border-t border-border pt-3">
                 <p className="text-sm font-semibold text-foreground">
                   {testimonial.author}
                 </p>

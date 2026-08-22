@@ -46,12 +46,10 @@ const faqs = [
 
 export const FAQ = () => {
   return (
-    <section className="py-12 sm:py-24 bg-background overflow-hidden">
+    <section className="section-y bg-background overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 break-words">
-            Частые вопросы
-          </h2>
+        <div className="section-head text-center">
+          <h2 className="text-foreground">Частые вопросы</h2>
         </div>
 
         <div className="max-w-3xl mx-auto">

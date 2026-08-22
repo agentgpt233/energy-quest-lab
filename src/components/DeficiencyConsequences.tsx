@@ -1,75 +1,49 @@
-import { BatteryLow, ShieldAlert, Brain, Frown, HelpCircle, TrendingDown, Battery, FileX } from "lucide-react";
+import { BatteryLow, ShieldAlert, Brain, Frown, Battery, FileX } from "lucide-react";
 
 const consequences = [
-  {
-    icon: BatteryLow,
-    title: "Хроническая усталость",
-    description: "Постоянная усталость и вялость",
-  },
-  {
-    icon: ShieldAlert,
-    title: "Плохое самочувствие",
-    description: "Слабый иммунитет, недомогания",
-  },
-  {
-    icon: Brain,
-    title: "Сложность с концентрацией",
-    description: "Трудности с концентрацией",
-  },
-  {
-    icon: Frown,
-    title: "Эмоциональная нестабильность",
-    description: "Раздражительность и агрессия",
-  },
-  {
-    icon: Battery,
-    title: "Снижение мотивации",
-    description: "Мало энергии и выносливости",
-  },
-  {
-    icon: FileX,
-    title: "Низкая работоспособность",
-    description: "Влияние всех факторов",
-  },
+  { icon: BatteryLow,  title: "Хроническая усталость",   description: "вялость с самого утра" },
+  { icon: ShieldAlert, title: "Слабый иммунитет",        description: "частые недомогания" },
+  { icon: Brain,       title: "Туман в голове",          description: "сложно сосредоточиться" },
+  { icon: Frown,       title: "Раздражительность",       description: "эмоциональные качели" },
+  { icon: Battery,     title: "Нет мотивации",           description: "мало сил на цели" },
+  { icon: FileX,       title: "Низкая работоспособность", description: "всё даётся труднее" },
 ];
 
 export const DeficiencyConsequences = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-secondary/30 to-background">
+    <section className="section-y bg-gradient-to-b from-secondary/30 to-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Последствия дефицита
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Дефицит витаминов и минералов в организме - одна из основных причин снижения энергии и мотивации
+        <div className="section-head text-center max-w-3xl mx-auto">
+          <h2 className="text-foreground">Последствия дефицита</h2>
+          <p className="text-muted-foreground">
+            Дефицит витаминов и минералов — одна из основных причин снижения энергии и мотивации
           </p>
         </div>
 
-        <div className="max-w-[700px] mx-auto text-center mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-          <p className="text-lg text-foreground leading-relaxed" style={{ fontSize: '1.15em' }}>
-            Каждый день вы чувствуете, что организм работает не на полную мощность. Вроде бы ничего серьёзного, но... эта усталость накапливается, мотивация падает, и даже простые задачи даются с трудом. Знакомо?
-          </p>
-        </div>
+        <p
+          className="max-w-[700px] mx-auto text-center text-foreground leading-relaxed text-[14.5px] sm:text-lg"
+          style={{ marginBottom: "var(--head-gap)" }}
+        >
+          Каждый день вы чувствуете, что организм работает не на полную мощность. Вроде бы ничего
+          серьёзного, но… эта усталость накапливается, мотивация падает, и даже простые задачи
+          даются с трудом. Знакомо?
+        </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {consequences.map((consequence, index) => {
+        <div className="card-grid cols-3-desk max-w-5xl mx-auto">
+          {consequences.map((consequence) => {
             const Icon = consequence.icon;
             return (
               <div
                 key={consequence.title}
-                className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="compact-card bg-card border border-border hover-lift hover:border-primary/50 hover:shadow-lg"
               >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-7 h-7 text-primary" />
+                <div className="compact-card__head">
+                  <span className="compact-card__icon bg-primary/10">
+                    <Icon className="w-[18px] h-[18px] text-primary" aria-hidden="true" />
+                  </span>
+                  <h3 className="compact-card__title text-foreground">{consequence.title}</h3>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  {consequence.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {consequence.description}
-                </p>
+                <p className="compact-card__text text-muted-foreground">{consequence.description}</p>
               </div>
             );
           })}

@@ -7,7 +7,7 @@ export const Bonus = () => {
 
   return (
     <>
-      <section className="py-12 sm:py-24 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5 relative overflow-hidden">
+      <section className="section-y bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden opacity-30 pointer-events-none">
         {[1, 2, 3].map((i) => (
@@ -26,32 +26,32 @@ export const Bonus = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center animate-fade-in">
-          <div className="mb-8 flex justify-center">
+          <div className="mb-4 sm:mb-8 flex justify-center">
             <div
               className="relative cursor-pointer transition-all duration-500"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
               <div
-                className={`w-32 h-32 rounded-2xl bg-gradient-to-br from-accent to-accent/60 flex items-center justify-center transition-all duration-500 ${
+                className={`w-20 h-20 sm:w-32 sm:h-32 rounded-2xl bg-gradient-to-br from-accent to-accent/60 flex items-center justify-center transition-all duration-500 ${
                   isHovered ? "rotate-12 scale-110" : ""
                 }`}
               >
-                <Gift className="w-16 h-16 text-white" />
+                <Gift className="w-10 h-10 sm:w-16 sm:h-16 text-white" aria-hidden="true" />
               </div>
               {isHovered && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Zap className="w-20 h-20 text-accent animate-scale-in" />
+                  <Zap className="w-12 h-12 sm:w-20 sm:h-20 text-accent animate-scale-in" aria-hidden="true" />
                 </div>
               )}
             </div>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 break-words px-4">
+          <h2 className="text-[25px] sm:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-5 break-words px-4 leading-tight">
             Начните бесплатно — это полноценный режим
           </h2>
 
-          <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4">
+          <p className="text-[15px] sm:text-xl text-muted-foreground mb-5 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4">
             Анализ еды по фото, дефициты, дневник и награды доступны сразу и бесплатно.
             Активность приносит витакоины — ими открываются дополнительные возможности.
             <br />
@@ -60,9 +60,9 @@ export const Bonus = () => {
             </span>
           </p>
 
-          <div className="max-w-2xl mx-auto mb-6 px-4">
-            <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-accent rounded-xl p-5 sm:p-6">
-              <p className="text-base sm:text-lg font-semibold text-orange-900 text-center leading-relaxed">
+          <div className="max-w-2xl mx-auto mb-5 px-4">
+            <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-accent rounded-xl p-4 sm:p-6">
+              <p className="text-[14px] sm:text-lg font-semibold text-orange-900 text-center leading-relaxed">
                 ⚡ Каждый день промедления — это день с дефицитом энергии. 
                 <br className="hidden sm:block" />
                 Начни восстановление прямо сейчас ⚡

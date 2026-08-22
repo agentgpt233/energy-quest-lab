@@ -9,15 +9,15 @@ export const Footer = () => {
   return (
     <>
       <LegalModal isOpen={isLegalModalOpen} onClose={() => setIsLegalModalOpen(false)} />
-      <footer className="py-16 bg-gradient-to-b from-background to-secondary/30">
+      <footer className="section-y bg-gradient-to-b from-background to-secondary/30">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+        <div className="max-w-4xl mx-auto text-center space-y-5 sm:space-y-8">
           <div className="space-y-4 animate-fade-in">
-            <h2 className="text-4xl font-bold text-foreground flex items-center justify-center gap-2">
+            <h2 className="text-[25px] sm:text-4xl font-bold text-foreground flex items-center justify-center gap-2">
               <Zap className="w-8 h-8 text-primary" />
               Medical Mind
             </h2>
-            <p className="text-xl text-muted-foreground font-medium">
+            <p className="text-[15px] sm:text-xl text-muted-foreground font-medium">
               Наука. Энергия. Игра.
             </p>
           </div>
@@ -54,13 +54,13 @@ export const Footer = () => {
               <a
                 href="/invest"
                 onClick={() => reachGoal("click_invest", { place: "footer" })}
-                className="font-medium text-primary transition-colors hover:text-primary/80 hover:underline"
+                className="tap font-medium text-primary transition-colors hover:text-primary/80 hover:underline"
               >
                 Инвесторам
               </a>
               <button
                 onClick={() => setIsLegalModalOpen(true)}
-                className="font-medium text-primary transition-colors hover:text-primary/80 hover:underline"
+                className="tap font-medium text-primary transition-colors hover:text-primary/80 hover:underline"
               >
                 Юридическая информация и реквизиты
               </button>
@@ -69,13 +69,13 @@ export const Footer = () => {
             <div className="mt-6 space-y-1 text-sm text-muted-foreground">
               <p>
                 Партнёрам (производители БАД, доставка еды, PR):{" "}
-                <a className="text-primary hover:underline" href="mailto:farmico@list.ru">
+                <a className="tap text-primary hover:underline" href="mailto:farmico@list.ru">
                   farmico@list.ru
                 </a>
               </p>
               <p>
                 Контакты:{" "}
-                <a className="text-primary hover:underline" href="mailto:farmico@list.ru">
+                <a className="tap text-primary hover:underline" href="mailto:farmico@list.ru">
                   farmico@list.ru
                 </a>
               </p>

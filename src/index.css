@@ -183,3 +183,190 @@ html {
   .hover-lift:hover { transform: none !important; }
   .animate-glow-pulse::after { animation: none !important; opacity: 0.35 !important; }
 }
+
+/* ============================================================
+   ШКАЛА ОТСТУПОВ. Только эти значения — произвольных нет.
+   Все секции и карточки берут ритм отсюда, поэтому интервалы
+   одинаковы по всей странице.
+   ============================================================ */
+:root {
+  --sp-1: 8px;
+  --sp-2: 12px;
+  --sp-3: 16px;
+  --sp-4: 24px;
+  --sp-5: 32px;
+  --sp-6: 48px;
+
+  /* мобильные значения (базовые) */
+  --section-pad: 44px;   /* секция → секция */
+  --grid-gap: 12px;      /* между карточками в сетке */
+  --card-pad: 14px;      /* внутренний padding карточки */
+  --head-gap: var(--sp-4); /* подзаголовок → контент */
+}
+
+@media (min-width: 641px) {
+  :root {
+    --section-pad: 72px;
+    --grid-gap: 22px;
+    --card-pad: 28px;
+    --head-gap: var(--sp-5);
+  }
+}
+
+@layer components {
+  /* Единый вертикальный ритм секции */
+  .section-y { padding-block: var(--section-pad); }
+
+  /* Шапка секции: h2 → 8-12px → подзаголовок → 24px → контент */
+  .section-head { margin-bottom: var(--head-gap); }
+  .section-head > h2 {
+    font-size: 25px;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+  .section-head > p {
+    margin-top: var(--sp-2);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  @media (min-width: 641px) {
+    .section-head > h2 { font-size: 40px; }
+    .section-head > p  { font-size: 19px; margin-top: var(--sp-2); }
+  }
+
+  /* Сетки карточек — один gap на всю страницу */
+  .card-grid { display: grid; gap: var(--grid-gap); }
+  .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cols-3-desk { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (min-width: 641px) {
+    .cols-3-desk { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  /* Компактная карточка: на мобильном иконка слева от заголовка */
+  .compact-card {
+    padding: var(--card-pad);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
+  }
+  @media (min-width: 641px) {
+    .compact-card { border-radius: 16px; gap: var(--sp-2); }
+  }
+  /* Иконка слева, но текст её обтекает: длинные слова вроде
+     «работоспособность» переносятся по-человечески, а не посередине. */
+  .compact-card__head { display: flow-root; }
+  .compact-card__icon {
+    float: left;
+    margin: 1px var(--sp-2) 0 0;
+    width: 30px; height: 30px;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .compact-card__title {
+    font-size: 14px; font-weight: 600; line-height: 1.3;
+    hyphens: auto;
+  }
+  .compact-card__text  { font-size: 12.5px; line-height: 1.4; }
+  @media (min-width: 641px) {
+    .compact-card__icon {
+      float: none; margin: 0 0 var(--sp-2) 0;
+      width: 48px; height: 48px; border-radius: 12px;
+    }
+    .compact-card__icon svg { width: 24px; height: 24px; }
+    .compact-card__title { font-size: 19px; }
+    .compact-card__text  { font-size: 15.5px; line-height: 1.55; }
+  }
+
+  /* Обрезка описания двумя строками — только на мобильном */
+  .clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  @media (min-width: 641px) {
+    .clamp-2 { display: block; overflow: visible; }
+  }
+
+  /* Комфортная тач-цель: минимум 44px по высоте */
+  .tap { display: inline-flex; align-items: center; min-height: 44px; }
+
+  /* Чипы (боли в hero, источники в «Научной основе») */
+  .chip-row { display: flex; flex-wrap: wrap; gap: var(--sp-1); }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 13px; line-height: 1.3;
+    background: hsl(var(--primary) / 0.09);
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--primary) / 0.16);
+  }
+  @media (min-width: 641px) { .chip { font-size: 14px; padding: 8px 14px; } }
+
+  /* Боли в hero — чипы только на телефоне; на десктопе прежний список */
+  @media (min-width: 641px) {
+    .chip-row--mobile { display: block; }
+    .chip-row--mobile > .chip {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      font-size: 18px;
+      line-height: 1.6;
+      color: hsl(var(--muted-foreground));
+    }
+    .chip-row--mobile > .chip + .chip { margin-top: 16px; }
+    .chip-row--mobile > .chip svg { width: 20px; height: 20px; margin-top: 5px; }
+  }
+
+  /* Вертикальный степпер «Как это работает» на мобильном */
+  .stepper { position: relative; display: grid; gap: var(--sp-3); padding-left: 40px; }
+  .stepper::before {
+    content: ""; position: absolute; left: 13px; top: 6px; bottom: 6px;
+    width: 2px; background: hsl(var(--primary) / 0.18);
+  }
+  .stepper__item { position: relative; }
+  .stepper__num {
+    position: absolute; left: -40px; top: 0;
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+    background: hsl(var(--primary)); color: hsl(var(--primary-foreground));
+  }
+  .stepper__title { font-size: 15px; font-weight: 600; line-height: 1.25; }
+  .stepper__text  { font-size: 13px; line-height: 1.45; margin-top: 2px; }
+
+  /* Свайп-карусель отзывов */
+  .swipe-row {
+    display: flex;
+    gap: var(--grid-gap);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .swipe-row::-webkit-scrollbar { display: none; }
+  .swipe-row > * {
+    /* именно flex-basis + width: с flex:0 0 auto элемент растягивался
+       по длине текста и выносил горизонтальный скролл на всю страницу */
+    flex: 0 0 78vw;
+    width: 78vw;
+    max-width: 78vw;
+    scroll-snap-align: center;
+  }
+  @media (min-width: 641px) {
+    .swipe-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      overflow: visible;
+      scroll-snap-type: none;
+    }
+    .swipe-row > * { flex: initial; width: auto; max-width: none; }
+  }
+}

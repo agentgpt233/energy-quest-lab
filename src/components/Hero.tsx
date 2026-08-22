@@ -55,10 +55,10 @@ export const Hero = () => {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 max-w-7xl w-full">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 relative z-10 max-w-7xl w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Левая колонка */}
-          <div className="space-y-8 w-full max-w-full overflow-hidden">
+          <div className="space-y-5 sm:space-y-8 w-full max-w-full overflow-hidden">
             <picture>
               <source type="image/webp" srcSet={brandingWebp} />
               <img
@@ -96,14 +96,15 @@ export const Hero = () => {
               питания.
             </p>
 
+            {/* Боли — чипами в строку: на телефоне это 2 строки вместо 3 блоков */}
             <ul
-              className="space-y-4 text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-full rise"
+              className="chip-row chip-row--mobile rise"
               style={{ "--rise-delay": "240ms" } as React.CSSProperties}
             >
               {PAINS.map(({ Icon, text }) => (
-                <li key={text} className="flex items-start gap-3">
-                  <Icon className="w-5 h-5 text-primary flex-shrink-0 mt-1" aria-hidden="true" />
-                  <span className="break-words">{text}</span>
+                <li key={text} className="chip">
+                  <Icon className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" />
+                  <span>{text}</span>
                 </li>
               ))}
             </ul>

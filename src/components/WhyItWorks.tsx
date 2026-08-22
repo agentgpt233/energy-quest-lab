@@ -25,33 +25,33 @@ const features = [
 
 export const WhyItWorks = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-secondary/30">
+    <section className="section-y bg-gradient-to-b from-background to-secondary/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
+        <div className="section-head text-center max-w-3xl mx-auto">
+          <h2 className="text-foreground">
             Баланс без дефицита — простой способ стать крепче и энергичнее
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Когда организм получает все необходимые нутриенты, вы чувствуете реальные изменения уже через несколько дней
+          <p className="text-muted-foreground">
+            Когда организм получает все необходимые нутриенты, вы чувствуете реальные изменения
+            уже через несколько дней
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {features.map((feature, index) => {
+        <div className="card-grid cols-2 max-w-5xl mx-auto">
+          {features.map((feature) => {
             const Icon = feature.icon;
             return (
               <div
                 key={feature.title}
-                className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="compact-card bg-card border border-border hover-lift hover:border-primary/50 hover:shadow-lg"
               >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-7 h-7 text-primary" />
+                <div className="compact-card__head">
+                  <span className="compact-card__icon bg-primary/10">
+                    <Icon className="w-[18px] h-[18px] text-primary" aria-hidden="true" />
+                  </span>
+                  <h3 className="compact-card__title text-foreground">{feature.title}</h3>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="compact-card__text text-muted-foreground clamp-2">
                   {feature.description}
                 </p>
               </div>
