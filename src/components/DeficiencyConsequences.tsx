@@ -1,12 +1,10 @@
-import { BatteryLow, ShieldAlert, Brain, Frown, Battery, FileX } from "lucide-react";
+import { BatteryLow, ShieldAlert, Frown, Battery } from "lucide-react";
 
 const consequences = [
-  { icon: BatteryLow,  title: "Хроническая усталость",   description: "вялость с самого утра" },
-  { icon: ShieldAlert, title: "Слабый иммунитет",        description: "частые недомогания" },
-  { icon: Brain,       title: "Туман в голове",          description: "сложно сосредоточиться" },
-  { icon: Frown,       title: "Раздражительность",       description: "эмоциональные качели" },
-  { icon: Battery,     title: "Нет мотивации",           description: "мало сил на цели" },
-  { icon: FileX,       title: "Низкая работоспособность", description: "всё даётся труднее" },
+  { icon: BatteryLow,  title: "Хроническая усталость", description: "вялость с самого утра" },
+  { icon: ShieldAlert, title: "Слабый иммунитет",      description: "частые недомогания" },
+  { icon: Frown,       title: "Раздражительность",     description: "эмоциональные качели" },
+  { icon: Battery,     title: "Нет мотивации",         description: "мало сил на цели" },
 ];
 
 export const DeficiencyConsequences = () => {
@@ -20,16 +18,7 @@ export const DeficiencyConsequences = () => {
           </p>
         </div>
 
-        <p
-          className="max-w-[700px] mx-auto text-center text-foreground leading-relaxed text-[14.5px] sm:text-lg"
-          style={{ marginBottom: "var(--head-gap)" }}
-        >
-          Каждый день вы чувствуете, что организм работает не на полную мощность. Вроде бы ничего
-          серьёзного, но… эта усталость накапливается, мотивация падает, и даже простые задачи
-          даются с трудом. Знакомо?
-        </p>
-
-        <div className="card-grid cols-3-desk max-w-5xl mx-auto">
+        <div className="card-grid cols-2 max-w-3xl mx-auto">
           {consequences.map((consequence) => {
             const Icon = consequence.icon;
             return (

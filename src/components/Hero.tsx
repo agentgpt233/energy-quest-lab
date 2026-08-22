@@ -1,10 +1,7 @@
 import { Zap, TrendingDown, HeartCrack, BrainCog, Apple, Download } from "lucide-react";
-import heroPhone from "@/assets/hero-phone.png";
-import heroPhoneWebp from "@/assets/hero-phone.webp";
-import brandingImage from "@/assets/medical-mind-branding.png";
-import brandingWebp from "@/assets/medical-mind-branding.webp";
 import { reachGoal, RUSTORE_URL } from "@/lib/analytics";
 import { useCountUp } from "@/hooks/useReveal";
+import { ScreenCarousel } from "./ScreenCarousel";
 
 const PAINS = [
   { Icon: TrendingDown, text: "Постоянная усталость и низкая энергия" },
@@ -55,21 +52,10 @@ export const Hero = () => {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 relative z-10 max-w-7xl w-full">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-28 sm:pb-20 relative z-10 max-w-7xl w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Левая колонка */}
           <div className="space-y-5 sm:space-y-8 w-full max-w-full overflow-hidden">
-            <picture>
-              <source type="image/webp" srcSet={brandingWebp} />
-              <img
-                src={brandingImage}
-                alt="Medical Mind"
-                width={512}
-                height={80}
-                className="w-48 sm:w-64 h-auto rise"
-                style={{ "--rise-delay": "0ms" } as React.CSSProperties}
-              />
-            </picture>
 
             <div
               className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full border border-accent/20 rise"
@@ -136,31 +122,12 @@ export const Hero = () => {
             </div>
           </div>
 
-          {/* Правая колонка */}
+          {/* Правая колонка — реальные экраны приложения */}
           <div
-            className="relative w-full max-w-full overflow-hidden rise"
+            className="relative w-full max-w-full rise"
             style={{ "--rise-delay": "200ms" } as React.CSSProperties}
           >
-            <div className="relative z-10 animate-float w-full max-w-full">
-              <div className="relative w-full max-w-[280px] sm:max-w-[300px] mx-auto">
-                <div className="relative bg-black rounded-[3rem] p-3 shadow-2xl">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-black rounded-b-3xl z-10"></div>
-                  <div className="relative bg-white rounded-[2.5rem] overflow-hidden">
-                    <picture>
-                      <source type="image/webp" srcSet={heroPhoneWebp} />
-                      <img
-                        src={heroPhone}
-                        alt="Экран Medical Mind: анализ блюда по фото и суточные нормы нутриентов"
-                        width={560}
-                        height={1215}
-                        className="w-full h-auto"
-                      />
-                    </picture>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 blur-3xl -z-10" />
+            <ScreenCarousel />
           </div>
         </div>
       </div>

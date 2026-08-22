@@ -370,3 +370,145 @@ html {
     .swipe-row > * { flex: initial; width: auto; max-width: none; }
   }
 }
+
+/* ============================================================
+   Экраны приложения: лёгкая CSS-рамка + свайп-карусель
+   ============================================================ */
+@layer components {
+  .phone-frame {
+    background: linear-gradient(160deg, #2a3742, #0f1a24);
+    border-radius: 26px;
+    padding: 6px;
+    box-shadow: 0 14px 34px rgb(16 78 120 / 0.22);
+  }
+  .phone-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    background: #fff;
+  }
+
+  .screen-carousel { position: relative; }
+
+  .carousel-track {
+    display: flex;
+    gap: var(--sp-2);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    /* следующий кадр слегка выглядывает */
+    padding-inline: 6%;
+  }
+  .carousel-track::-webkit-scrollbar { display: none; }
+
+  .carousel-slide {
+    flex: 0 0 88%;
+    width: 88%;
+    max-width: 260px;
+    scroll-snap-align: center;
+  }
+  @media (min-width: 1024px) {
+    .carousel-track { padding-inline: 12%; }
+    .carousel-slide { flex-basis: 76%; width: 76%; max-width: 250px; }
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-top: var(--sp-1);
+  }
+  /* видимая точка маленькая, но область нажатия — полные 44px */
+  .carousel-dot {
+    width: 44px; height: 44px;
+    display: grid; place-items: center;
+    background: none; border: 0; cursor: pointer;
+  }
+  .carousel-dot::before {
+    content: "";
+    width: 7px; height: 7px; border-radius: 50%;
+    background: hsl(var(--primary) / 0.28);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .carousel-dot.is-active::before {
+    background: hsl(var(--primary));
+    transform: scale(1.35);
+  }
+
+  .carousel-caption {
+    margin-top: 6px;
+    text-align: center;
+    font-size: 12.5px;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 45%;
+    z-index: 2;
+    display: none;
+    width: 40px; height: 40px;
+    align-items: center; justify-content: center;
+    border-radius: 50%;
+    background: hsl(var(--background) / 0.92);
+    border: 1px solid hsl(var(--border));
+    color: hsl(var(--foreground));
+    box-shadow: 0 4px 14px rgb(16 78 120 / 0.16);
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+  }
+  .carousel-arrow:disabled { opacity: 0.35; cursor: default; }
+  .carousel-arrow:not(:disabled):hover { background: hsl(var(--background)); }
+  .carousel-arrow--prev { left: -6px; }
+  .carousel-arrow--next { right: -6px; }
+  @media (min-width: 1024px) { .carousel-arrow { display: flex; } }
+
+  /* Полоса «Как это работает»: 4 шага со скринами */
+  .steps-strip {
+    display: flex;
+    gap: var(--sp-2);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    align-items: start;
+  }
+  .steps-strip::-webkit-scrollbar { display: none; }
+  .steps-strip > * {
+    flex: 0 0 62%;
+    scroll-snap-align: center;
+  }
+  @media (min-width: 768px) {
+    .steps-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--sp-3);
+      overflow: visible;
+    }
+    .steps-strip > * { flex: initial; }
+  }
+  .step-col__num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: 50%;
+    font-size: 13px; font-weight: 700;
+    background: hsl(var(--primary)); color: hsl(var(--primary-foreground));
+  }
+  .step-col__title { font-size: 15px; font-weight: 600; line-height: 1.25; }
+  .step-col__text { font-size: 12.5px; line-height: 1.4; margin-top: 2px; }
+  @media (min-width: 768px) {
+    .step-col__title { font-size: 16px; }
+    .step-col__text { font-size: 13.5px; }
+  }
+
+  /* Панель «Начните бесплатно» */
+  .free-panel {
+    border-radius: 24px;
+    background: linear-gradient(135deg, #f2f8fe, #e8f2fc);
+    border: 1px solid hsl(var(--primary) / 0.16);
+    padding: var(--sp-4);
+  }
+  @media (min-width: 768px) {
+    .free-panel { padding: var(--sp-6); }
+  }
+}

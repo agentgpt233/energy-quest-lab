@@ -42,7 +42,7 @@ export const SiteHeader = () => {
         <a
           href="/"
           aria-label="Medical Mind — на главную"
-          className="flex flex-shrink-0 items-center gap-2 font-bold text-foreground min-h-[44px] min-w-[44px] pr-2"
+          className="flex flex-shrink-0 items-center gap-2 min-h-[44px] min-w-[44px] pr-2 text-[#0b1b2b] font-bold tracking-tight"
         >
           <picture>
             <source type="image/webp" srcSet={logoWebp} />

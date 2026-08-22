@@ -19,7 +19,10 @@ export const StickyCTA = () => {
 
     const update = () => {
       ticking = false;
-      const next = window.scrollY > window.innerHeight * 0.3;
+      const doc = document.documentElement;
+      const fromBottom = doc.scrollHeight - (window.scrollY + window.innerHeight);
+      // у самого низа прячем — иначе кнопка перекрывает ссылки футера
+      const next = window.scrollY > window.innerHeight * 0.3 && fromBottom > 220;
       if (next !== visibleRef.current) {
         visibleRef.current = next;
         setIsVisible(next);
