@@ -1,16 +1,13 @@
-import { Button } from "@/components/ui/button";
-import { Zap, Lock } from "lucide-react";
+import { Zap, Lock, Download } from "lucide-react";
 import { useState } from "react";
-import { DownloadModal } from "./DownloadModal";
 import { LegalModal } from "./LegalModal";
+import { reachGoal, RUSTORE_URL } from "@/lib/analytics";
 
 export const Footer = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
 
   return (
     <>
-      <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <LegalModal isOpen={isLegalModalOpen} onClose={() => setIsLegalModalOpen(false)} />
       <footer className="py-16 bg-gradient-to-b from-background to-secondary/30">
       <div className="container mx-auto px-4">
@@ -26,14 +23,16 @@ export const Footer = () => {
           </div>
 
           <div className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            <Button
-              size="lg"
-              onClick={() => setIsModalOpen(true)}
-              className="bg-primary hover:bg-primary/90 text-white text-lg px-10 py-6 shadow-lg hover:shadow-xl transition-all duration-300 group"
+            <a
+              href={RUSTORE_URL}
+              target="_blank"
+              rel="noopener"
+              onClick={() => reachGoal("click_rustore", { place: "footer" })}
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-10 py-6 text-lg font-medium text-white shadow-lg transition-all duration-300 hover:bg-primary/90 hover:shadow-xl hover:-translate-y-0.5"
             >
-              <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-              Восстановить энергию дня
-            </Button>
+              <Download className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+              Скачать в RuStore — бесплатно
+            </a>
             <div className="flex items-center justify-center gap-2 mt-4 text-sm text-muted-foreground">
               <Lock className="w-4 h-4" />
               <span>Безопасно и конфиденциально</span>
@@ -48,12 +47,39 @@ export const Footer = () => {
             <p className="mt-2">
               Научно-игровое приложение для восстановления энергии через нутриенты
             </p>
-            <button
-              onClick={() => setIsLegalModalOpen(true)}
-              className="mt-4 text-base text-primary hover:text-primary/80 hover:underline transition-colors font-medium"
+            <nav
+              className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-base"
+              aria-label="Дополнительные разделы"
             >
-              Юридическая информация и реквизиты
-            </button>
+              <a
+                href="/invest"
+                onClick={() => reachGoal("click_invest", { place: "footer" })}
+                className="font-medium text-primary transition-colors hover:text-primary/80 hover:underline"
+              >
+                Инвесторам
+              </a>
+              <button
+                onClick={() => setIsLegalModalOpen(true)}
+                className="font-medium text-primary transition-colors hover:text-primary/80 hover:underline"
+              >
+                Юридическая информация и реквизиты
+              </button>
+            </nav>
+
+            <div className="mt-6 space-y-1 text-sm text-muted-foreground">
+              <p>
+                Партнёрам (производители БАД, доставка еды, PR):{" "}
+                <a className="text-primary hover:underline" href="mailto:farmico@list.ru">
+                  farmico@list.ru
+                </a>
+              </p>
+              <p>
+                Контакты:{" "}
+                <a className="text-primary hover:underline" href="mailto:farmico@list.ru">
+                  farmico@list.ru
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </div>

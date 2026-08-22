@@ -1,15 +1,12 @@
-import { Button } from "@/components/ui/button";
-import { Gift, Sparkles, Zap } from "lucide-react";
+import { Gift, Sparkles, Zap, Download } from "lucide-react";
 import { useState } from "react";
-import { DownloadModal } from "./DownloadModal";
+import { reachGoal, RUSTORE_URL } from "@/lib/analytics";
 
 export const Bonus = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
-      <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <section className="py-12 sm:py-24 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden opacity-30 pointer-events-none">
@@ -51,14 +48,15 @@ export const Bonus = () => {
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 break-words px-4">
-            Восстанови энергию дня и начни бесплатно ⚡
+            Начните бесплатно — это полноценный режим
           </h2>
 
           <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed px-4">
-            Все функции доступны бесплатно — просто будь активен.
+            Анализ еды по фото, дефициты, дневник и награды доступны сразу и бесплатно.
+            Активность приносит витакоины — ими открываются дополнительные возможности.
             <br />
             <span className="text-primary font-semibold">
-              Без подписок. Без ограничений. Только энергия ⚡
+              Для максимума без ожидания есть подписка Premium.
             </span>
           </p>
 
@@ -72,14 +70,16 @@ export const Bonus = () => {
             </div>
           </div>
 
-          <Button
-            size="lg"
-            onClick={() => setIsModalOpen(true)}
-            className="bg-accent hover:bg-accent/90 text-accent-foreground text-base sm:text-lg px-6 sm:px-10 py-5 sm:py-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-glow-pulse group w-full sm:w-auto max-w-md mx-4"
+          <a
+            href={RUSTORE_URL}
+            target="_blank"
+            rel="noopener"
+            onClick={() => reachGoal("click_rustore", { place: "bonus" })}
+            className="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 sm:px-10 py-5 sm:py-6 text-base sm:text-lg font-medium text-accent-foreground shadow-lg transition-all duration-300 hover:bg-accent/90 hover:shadow-xl hover:-translate-y-0.5 w-full sm:w-auto max-w-md mx-4"
           >
-            <Zap className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform flex-shrink-0" />
-            <span className="break-words">Восстановить энергию дня</span>
-          </Button>
+            <Download className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            <span className="break-words">Скачать в RuStore — бесплатно</span>
+          </a>
         </div>
       </div>
     </section>

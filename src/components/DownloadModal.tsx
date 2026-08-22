@@ -2,6 +2,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Apple, Play } from "lucide-react";
 import logoImage from "@/assets/medical-mind-logo.png";
+import logoWebp from "@/assets/medical-mind-logo.webp";
+import { reachGoal, RUSTORE_URL } from "@/lib/analytics";
 
 interface DownloadModalProps {
   isOpen: boolean;
@@ -14,22 +16,21 @@ export const DownloadModal = ({ isOpen, onClose }: DownloadModalProps) => {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <div className="flex justify-center mb-4">
-            <img 
-              src={logoImage} 
-              alt="Medical Mind" 
-              className="w-24 h-24 animate-scale-in"
-            />
+            <picture>
+              <source type="image/webp" srcSet={logoWebp} />
+              <img src={logoImage} alt="Medical Mind" width={96} height={96} className="w-24 h-24" />
+            </picture>
           </div>
           <DialogTitle className="text-center text-2xl">
-            🎁 Восстанови энергию дня
+            Скачайте Medical Mind
           </DialogTitle>
         </DialogHeader>
         
         <div className="space-y-6 py-4">
           <p className="text-center text-lg text-muted-foreground">
-            ⚡ Каждый день промедления — это день с дефицитом энергии.
+            Анализ еды по фото, дефициты и персональные нормы — бесплатно,
             <br />
-            Начни восстановление прямо сейчас ⚡
+            сразу после установки.
           </p>
 
           <div className="space-y-3">
@@ -42,14 +43,16 @@ export const DownloadModal = ({ isOpen, onClose }: DownloadModalProps) => {
               Скоро на iOS
             </Button>
 
-            <Button 
-              size="lg" 
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-6"
-              onClick={() => window.open('https://www.rustore.ru/catalog/app/app.rork.nutritionapp', '_blank')}
+            <a
+              href={RUSTORE_URL}
+              target="_blank"
+              rel="noopener"
+              onClick={() => reachGoal("click_rustore", { place: "modal" })}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary py-6 text-lg font-medium text-primary-foreground transition-colors hover:bg-primary/90"
             >
-              <Play className="w-5 h-5 mr-2" />
-              Скачать Android
-            </Button>
+              <Play className="w-5 h-5" aria-hidden="true" />
+              Скачать в RuStore — бесплатно
+            </a>
           </div>
 
           <p className="text-center text-sm text-muted-foreground">

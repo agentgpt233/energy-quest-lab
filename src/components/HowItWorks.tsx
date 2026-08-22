@@ -1,5 +1,6 @@
 import { Activity, ClipboardList, Calculator, Target } from "lucide-react";
 import howItWorksPhone from "@/assets/how-it-works-phone.png";
+import howItWorksPhoneWebp from "@/assets/how-it-works-phone.webp";
 
 const steps = [
   {
@@ -49,7 +50,7 @@ export const HowItWorks = () => {
               return (
                 <div
                   key={step.number}
-                  className="flex items-start gap-4"
+                  className="flex items-start gap-4 hover-lift rounded-xl p-2 hover:shadow-lg"
                   style={{ animationDelay: `${index * 0.15}s` }}
                 >
                   <div className="relative flex-shrink-0">
@@ -78,11 +79,18 @@ export const HowItWorks = () => {
               <div className="relative bg-black rounded-[2.5rem] p-2 shadow-2xl">
                 {/* Screen */}
                 <div className="relative bg-white rounded-[2rem] overflow-hidden">
-                  <img
-                    src={howItWorksPhone}
-                    alt="Как работает Medical Mind"
-                    className="w-full h-auto"
-                  />
+                    <picture>
+                      <source type="image/webp" srcSet={howItWorksPhoneWebp} />
+                      <img
+                        src={howItWorksPhone}
+                        alt="Экран разбора блюда в Medical Mind: КБЖУ, витамины и минералы"
+                        width={590}
+                        height={1280}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-auto"
+                      />
+                    </picture>
                 </div>
               </div>
             </div>
@@ -96,7 +104,7 @@ export const HowItWorks = () => {
               return (
                 <div
                   key={step.number}
-                  className="flex items-start gap-4"
+                  className="flex items-start gap-4 hover-lift rounded-xl p-2 hover:shadow-lg"
                   style={{ animationDelay: `${index * 0.15}s` }}
                 >
                   <div className="relative flex-shrink-0">

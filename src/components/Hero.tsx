@@ -1,23 +1,49 @@
-import { Button } from "@/components/ui/button";
-import { Gift, Zap, TrendingDown, HeartCrack, BrainCog } from "lucide-react";
+import { Zap, TrendingDown, HeartCrack, BrainCog, Apple, Download } from "lucide-react";
 import heroPhone from "@/assets/hero-phone.png";
+import heroPhoneWebp from "@/assets/hero-phone.webp";
 import brandingImage from "@/assets/medical-mind-branding.png";
-import { useState } from "react";
-import { DownloadModal } from "./DownloadModal";
+import brandingWebp from "@/assets/medical-mind-branding.webp";
+import { reachGoal, RUSTORE_URL } from "@/lib/analytics";
+import { useCountUp } from "@/hooks/useReveal";
 
-export const Hero = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const PAINS = [
+  { Icon: TrendingDown, text: "Постоянная усталость и низкая энергия" },
+  { Icon: HeartCrack, text: "Тревожность и раздражительность" },
+  { Icon: BrainCog, text: "Проблемы с концентрацией" },
+];
+
+/* Парящие нутриенты: 4 на мобильных, все 6 на десктопе (бюджет анимаций) */
+const ELEMENTS = ["Ca", "Mg", "Zn", "Fe", "K", "Na"];
+
+const SocialProof = () => {
+  const installs = useCountUp(1000);
+  const rating = useCountUp(5, 1);
 
   return (
-    <>
-    <DownloadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    <p className="text-sm text-muted-foreground break-words">
+      <span ref={installs.ref} className="font-semibold text-foreground tabular-nums">
+        {installs.initial}
+      </span>
+      <span className="font-semibold text-foreground">+</span> установок ·{" "}
+      <span ref={rating.ref} className="font-semibold text-foreground tabular-nums">
+        {rating.initial}
+      </span>{" "}
+      ★ в RuStore · научная база НИИ гигиены Роспотребнадзора
+    </p>
+  );
+};
+
+export const Hero = () => {
+  return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-secondary/30 to-primary/5 overflow-hidden">
-      {/* Floating particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        {["Ca", "Mg", "Zn", "Fe", "K", "Na"].map((element, i) => (
+      {/* Парящие нутриенты — только transform, без JS-циклов */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        {ELEMENTS.map((element, i) => (
           <div
             key={element}
-            className="absolute text-primary/20 font-bold text-2xl animate-float hidden sm:block"
+            className={`absolute text-primary/20 font-bold text-2xl animate-float ${
+              i < 4 ? "block" : "hidden sm:block"
+            }`}
             style={{
               left: `${15 + i * 15}%`,
               top: `${20 + (i % 3) * 25}%`,
@@ -31,79 +57,106 @@ export const Hero = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 max-w-7xl w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
-          {/* Left content */}
-          <div className="space-y-8 animate-fade-in w-full max-w-full overflow-hidden">
-            <img 
-              src={brandingImage} 
-              alt="Medical Mind" 
-              className="w-48 sm:w-64 h-auto animate-scale-in"
-            />
-            
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full border border-accent/20">
+          {/* Левая колонка */}
+          <div className="space-y-8 w-full max-w-full overflow-hidden">
+            <picture>
+              <source type="image/webp" srcSet={brandingWebp} />
+              <img
+                src={brandingImage}
+                alt="Medical Mind"
+                width={512}
+                height={80}
+                className="w-48 sm:w-64 h-auto rise"
+                style={{ "--rise-delay": "0ms" } as React.CSSProperties}
+              />
+            </picture>
+
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full border border-accent/20 rise"
+              style={{ "--rise-delay": "60ms" } as React.CSSProperties}
+            >
               <Zap className="w-4 h-4 text-accent" />
               <span className="text-sm font-medium text-foreground">
-                Научно-игровое приложение
+                ИИ-анализ питания · методика НИИ гигиены
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground break-words">
-              Верни энергию и бодрость за 7 дней —{" "}
-              <span className="text-primary">без диет и БАДов</span> ⚡
+            <h1
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground break-words rise"
+              style={{ "--rise-delay": "120ms" } as React.CSSProperties}
+            >
+              Узнайте, чего не хватает вашему организму, —{" "}
+              <span className="text-primary">по фото еды</span>
             </h1>
 
-            <div className="space-y-4 text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-full">
-              <div className="flex items-start gap-3">
-                <TrendingDown className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                <p className="break-words">Высокий уровень утомляемости, нет жизнерадостности</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <HeartCrack className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                <p className="break-words">Повышенное чувство тревоги и напряжения</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <BrainCog className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                <p className="break-words">Проблемы с концентрацией и мотивацией</p>
-              </div>
+            <p
+              className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl rise"
+              style={{ "--rise-delay": "180ms" } as React.CSSProperties}
+            >
+              Medical Mind за секунды рассчитывает КБЖУ и 30+ нутриентов, находит скрытые
+              дефициты витаминов и минералов — и возвращает энергию через персональный план
+              питания.
+            </p>
+
+            <ul
+              className="space-y-4 text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-full rise"
+              style={{ "--rise-delay": "240ms" } as React.CSSProperties}
+            >
+              {PAINS.map(({ Icon, text }) => (
+                <li key={text} className="flex items-start gap-3">
+                  <Icon className="w-5 h-5 text-primary flex-shrink-0 mt-1" aria-hidden="true" />
+                  <span className="break-words">{text}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Главный CTA — настоящая ссылка, видна в исходнике и ботам */}
+            <div
+              className="flex flex-col sm:flex-row sm:items-center gap-3 rise"
+              style={{ "--rise-delay": "300ms" } as React.CSSProperties}
+            >
+              <a
+                href={RUSTORE_URL}
+                target="_blank"
+                rel="noopener"
+                onClick={() => reachGoal("click_rustore", { place: "hero" })}
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 sm:px-8 py-4 text-sm sm:text-base lg:text-lg font-medium text-primary-foreground shadow-lg transition-all duration-300 hover:bg-primary/90 hover:shadow-xl hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                <Download className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+                <span className="break-words">Скачать в RuStore — бесплатно</span>
+              </a>
+
+              <span className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-muted/60 px-5 py-3 text-sm text-muted-foreground">
+                <Apple className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
+                Скоро на iOS
+              </span>
             </div>
 
-            <Button
-              size="lg"
-              onClick={() => setIsModalOpen(true)}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm sm:text-base lg:text-lg px-4 sm:px-8 py-4 sm:py-6 shadow-lg hover:shadow-xl transition-all duration-300 animate-scale-in group w-full sm:w-auto max-w-full whitespace-normal leading-snug"
-            >
-              <Gift className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:rotate-12 transition-transform flex-shrink-0" />
-              <span className="break-words">Начать бесплатно и восстановить энергию дня</span>
-            </Button>
-
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 text-sm text-muted-foreground">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent border-2 border-background"
-                  />
-                ))}
-              </div>
-              <span className="break-words">Более 3,000 человек восстановили энергию сегодня 🔥</span>
+            <div className="rise" style={{ "--rise-delay": "360ms" } as React.CSSProperties}>
+              <SocialProof />
             </div>
           </div>
 
-          {/* Right image */}
-          <div className="relative animate-fade-in w-full max-w-full overflow-hidden" style={{ animationDelay: "0.2s" }}>
+          {/* Правая колонка */}
+          <div
+            className="relative w-full max-w-full overflow-hidden rise"
+            style={{ "--rise-delay": "200ms" } as React.CSSProperties}
+          >
             <div className="relative z-10 animate-float w-full max-w-full">
-              {/* iPhone frame */}
               <div className="relative w-full max-w-[280px] sm:max-w-[300px] mx-auto">
-                {/* iPhone shadow and frame */}
                 <div className="relative bg-black rounded-[3rem] p-3 shadow-2xl">
-                  {/* Notch */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-black rounded-b-3xl z-10"></div>
-                  {/* Screen */}
                   <div className="relative bg-white rounded-[2.5rem] overflow-hidden">
-                    <img
-                      src={heroPhone}
-                      alt="Medical Mind App Interface"
-                      className="w-full h-auto"
-                    />
+                    <picture>
+                      <source type="image/webp" srcSet={heroPhoneWebp} />
+                      <img
+                        src={heroPhone}
+                        alt="Экран Medical Mind: анализ блюда по фото и суточные нормы нутриентов"
+                        width={560}
+                        height={1215}
+                        className="w-full h-auto"
+                      />
+                    </picture>
                   </div>
                 </div>
               </div>
@@ -113,6 +166,5 @@ export const Hero = () => {
         </div>
       </div>
     </section>
-    </>
   );
 };

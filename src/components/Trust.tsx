@@ -116,8 +116,17 @@ export const Trust = () => {
             </div>
 
             <p className="text-sm text-muted-foreground text-center max-w-2xl mx-auto leading-relaxed">
-              Методики основаны на более чем 200 клинических исследованиях 
-              в области нутрициологии и профилактической медицины
+              Методики прошли клиническую апробацию в ФБУН «Новосибирский НИИ гигиены»
+              Роспотребнадзора; нормы — СанПиН РФ, ВОЗ, EFSA.
+            </p>
+
+            {/* Интеллектуальная собственность */}
+            <p className="mt-6 text-sm text-muted-foreground text-center max-w-3xl mx-auto leading-relaxed">
+              <span className="font-semibold text-foreground">Патент РФ № 2867260</span> — способ
+              и система коррекции витаминно-минерального баланса (действует до 2045) ·{" "}
+              <span className="font-semibold text-foreground">Товарный знак Medical Mind® № 1078105</span> ·{" "}
+              <span className="font-semibold text-foreground">Свидетельство на программу для ЭВМ № 2025669484</span>{" "}
+              — собственный движок коррекции.
             </p>
           </div>
         </div>
