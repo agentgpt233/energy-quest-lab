@@ -1,7 +1,7 @@
 import { Zap, TrendingDown, HeartCrack, BrainCog, Apple, Download } from "lucide-react";
 import { reachGoal, RUSTORE_URL } from "@/lib/analytics";
 import { useCountUp } from "@/hooks/useReveal";
-import { ScreenCarousel } from "./ScreenCarousel";
+import { PhoneFrame } from "./PhoneFrame";
 
 const PAINS = [
   { Icon: TrendingDown, text: "Постоянная усталость и низкая энергия" },
@@ -17,14 +17,14 @@ const SocialProof = () => {
   const rating = useCountUp(5, 1);
 
   return (
-    <p className="text-sm text-muted-foreground break-words">
-      <span ref={installs.ref} className="font-semibold text-foreground tabular-nums">
+    <p className="hero-social text-sm break-words">
+      <strong ref={installs.ref} className="font-semibold tabular-nums">
         {installs.initial}
-      </span>
-      <span className="font-semibold text-foreground">+</span> установок ·{" "}
-      <span ref={rating.ref} className="font-semibold text-foreground tabular-nums">
+      </strong>
+      <strong className="font-semibold">+</strong> установок ·{" "}
+      <strong ref={rating.ref} className="font-semibold tabular-nums">
         {rating.initial}
-      </span>{" "}
+      </strong>{" "}
       ★ в RuStore · научная база НИИ гигиены Роспотребнадзора
     </p>
   );
@@ -32,13 +32,13 @@ const SocialProof = () => {
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-secondary/30 to-primary/5 overflow-hidden">
+    <section className="hero-gradient relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Парящие нутриенты — только transform, без JS-циклов */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {ELEMENTS.map((element, i) => (
           <div
             key={element}
-            className={`absolute text-primary/20 font-bold text-2xl animate-float ${
+            className={`hero-element absolute font-bold text-2xl animate-float ${
               i < 4 ? "block" : "hidden sm:block"
             }`}
             style={{
@@ -58,23 +58,23 @@ export const Hero = () => {
           <div className="space-y-5 sm:space-y-8 w-full max-w-full overflow-hidden">
 
             <div
-              className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full border border-accent/20 rise"
+              className="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full border rise"
               style={{ "--rise-delay": "60ms" } as React.CSSProperties}
             >
-              <Zap className="w-4 h-4 text-accent" />
-              <span className="text-sm font-medium text-foreground">
+              <Zap className="w-4 h-4" aria-hidden="true" />
+              <span className="text-sm font-medium">
                 ИИ-анализ питания · методика НИИ гигиены
               </span>
             </div>
 
             {/* Заголовок — LCP-элемент: рисуется сразу, без анимации появления */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground break-words">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight break-words">
               Узнайте, чего не хватает вашему организму, —{" "}
-              <span className="text-primary">по фото еды</span>
+              <span className="hero-accent">по фото еды</span>
             </h1>
 
             <p
-              className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl rise"
+              className="hero-lead text-base sm:text-lg leading-relaxed max-w-2xl rise"
               style={{ "--rise-delay": "180ms" } as React.CSSProperties}
             >
               Medical Mind за секунды рассчитывает КБЖУ и 30+ нутриентов, находит скрытые
@@ -105,13 +105,13 @@ export const Hero = () => {
                 target="_blank"
                 rel="noopener"
                 onClick={() => reachGoal("click_rustore", { place: "hero" })}
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 sm:px-8 py-4 text-sm sm:text-base lg:text-lg font-medium text-primary-foreground shadow-lg transition-all duration-300 hover:bg-primary/90 hover:shadow-xl hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                className="hero-cta-primary inline-flex items-center justify-center gap-2 rounded-md px-6 sm:px-8 py-4 text-sm sm:text-base lg:text-lg font-semibold shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 <Download className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
                 <span className="break-words">Скачать в RuStore — бесплатно</span>
               </a>
 
-              <span className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-muted/60 px-5 py-3 text-sm text-muted-foreground">
+              <span className="hero-cta-secondary inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm">
                 <Apple className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
                 Скоро на iOS
               </span>
@@ -122,12 +122,17 @@ export const Hero = () => {
             </div>
           </div>
 
-          {/* Правая колонка — реальные экраны приложения */}
+          {/* Правая колонка — один экран приложения */}
           <div
-            className="relative w-full max-w-full rise"
+            className="hero-shot relative w-full max-w-full rise"
             style={{ "--rise-delay": "200ms" } as React.CSSProperties}
           >
-            <ScreenCarousel />
+            <PhoneFrame
+              base="glavnaya"
+              alt="Главный экран Medical Mind: анализ по фото, суточная норма и сундуки наград"
+              eager
+              className="hero-shot__frame"
+            />
           </div>
         </div>
       </div>

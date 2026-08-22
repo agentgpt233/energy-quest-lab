@@ -246,34 +246,60 @@ html {
   .compact-card {
     padding: var(--card-pad);
     border-radius: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-1);
+    text-align: left;
   }
   @media (min-width: 641px) {
-    .compact-card { border-radius: 16px; gap: var(--sp-2); }
+    .compact-card { border-radius: 16px; }
   }
-  /* Иконка слева, но текст её обтекает: длинные слова вроде
-     «работоспособность» переносятся по-человечески, а не посередине. */
-  .compact-card__head { display: flow-root; }
+  /* Иконка — в своей колонке сетки: все строки заголовка и описания
+     стоят на одной левой линии и не заезжают под иконку. */
+  .compact-card {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    column-gap: var(--sp-2);
+    row-gap: 4px;
+    align-items: start;
+  }
   .compact-card__icon {
-    float: left;
-    margin: 1px var(--sp-2) 0 0;
-    width: 30px; height: 30px;
-    border-radius: 9px;
+    grid-column: 1;
+    grid-row: 1;
+    width: 34px; height: 34px;
+    border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
   }
-  .compact-card__title {
-    font-size: 14px; font-weight: 600; line-height: 1.3;
-    hyphens: auto;
+  .compact-card__title,
+  .compact-card__text {
+    grid-column: 2;
+    /* переносы только по словам, без дефисных разрывов */
+    hyphens: none;
+    overflow-wrap: normal;
+    word-break: normal;
   }
+  .compact-card__title { font-size: 15px; font-weight: 600; line-height: 1.3; }
   .compact-card__text  { font-size: 12.5px; line-height: 1.4; }
-  @media (min-width: 641px) {
-    .compact-card__icon {
-      float: none; margin: 0 0 var(--sp-2) 0;
-      width: 48px; height: 48px; border-radius: 12px;
+  /* В двух колонках на 390 px самое длинное слово — «Раздражительность» (~17 знаков).
+     Ужимаем иконку, отступы и кегль так, чтобы оно влезало целиком: разрывать слово нельзя. */
+  /* На 390 px в две колонки слово вроде «Раздражительность» (~127 px) не влезает
+     рядом с иконкой: остаётся либо рвать слово, либо ронять кегль до нечитаемого.
+     Поэтому здесь иконка встаёт над заголовком — текст занимает всю ширину карточки,
+     все строки по-прежнему на одной левой линии. */
+  @media (max-width: 420px) {
+    .compact-card {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 6px;
+      padding: 12px;
     }
+    .compact-card__icon { grid-column: 1; width: 28px; height: 28px; border-radius: 8px; }
+    .compact-card__title { grid-column: 1; font-size: 13.5px; line-height: 1.25; }
+    .compact-card__text  { grid-column: 1; font-size: 12px; line-height: 1.35; }
+  }
+  @media (min-width: 641px) {
+    /* на десктопе иконка над текстом — колонка на всю ширину */
+    .compact-card { grid-template-columns: 1fr; row-gap: var(--sp-2); }
+    .compact-card__icon { grid-column: 1; width: 48px; height: 48px; border-radius: 12px; }
     .compact-card__icon svg { width: 24px; height: 24px; }
+    .compact-card__title,
+    .compact-card__text { grid-column: 1; }
     .compact-card__title { font-size: 19px; }
     .compact-card__text  { font-size: 15.5px; line-height: 1.55; }
   }
@@ -368,6 +394,9 @@ html {
       scroll-snap-type: none;
     }
     .swipe-row > * { flex: initial; width: auto; max-width: none; }
+    /* на десктопе ряд не скроллится — клоны для зацикливания прятать,
+       иначе они видны как лишние карточки вторым рядом */
+    .swipe-row > [aria-hidden="true"] { display: none; }
   }
 }
 
@@ -385,6 +414,12 @@ html {
     display: block;
     width: 100%;
     height: auto;
+    border-radius: 20px;
+    background: #fff;
+  }
+  /* место под ещё не загруженный экран — размеры зарезервированы, сдвига нет */
+  .phone-frame__placeholder {
+    width: 100%;
     border-radius: 20px;
     background: #fff;
   }
@@ -449,7 +484,7 @@ html {
     top: 45%;
     z-index: 2;
     display: none;
-    width: 40px; height: 40px;
+    width: 44px; height: 44px;
     align-items: center; justify-content: center;
     border-radius: 50%;
     background: hsl(var(--background) / 0.92);
@@ -511,4 +546,86 @@ html {
   @media (min-width: 768px) {
     .free-panel { padding: var(--sp-6); }
   }
+}
+
+/* ============================================================
+   Hero на фирменном градиенте (как на роллапе, буклете и /invest)
+   ============================================================ */
+@layer components {
+  .hero-gradient {
+    background: linear-gradient(165deg, #0a3c82 0%, #1569c3 100%);
+    color: #fff;
+  }
+  /* Белый по самой светлой точке #1569C3 даёт 4.9:1 — контраст проходит. */
+
+  .hero-gradient .hero-badge {
+    background: rgb(255 255 255 / 0.14);
+    border-color: rgb(255 255 255 / 0.28);
+    color: #fff;
+  }
+  .hero-gradient .hero-badge svg { color: #fff; }
+
+  .hero-gradient h1,
+  .hero-gradient .hero-lead { color: #fff; }
+  .hero-gradient .hero-accent { color: #bfe3ff; }
+  .hero-gradient .hero-social { color: rgb(255 255 255 / 0.88); }
+  .hero-gradient .hero-social strong { color: #fff; }
+
+  /* Боли-чипы — стеклянные */
+  .hero-gradient .chip {
+    background: rgb(255 255 255 / 0.13);
+    border-color: rgb(255 255 255 / 0.26);
+    color: #fff;
+  }
+  .hero-gradient .chip svg { color: #fff; }
+  /* На десктопе боли остаются списком — стеклянный фон чипа тут не нужен */
+  @media (min-width: 641px) {
+    .hero-gradient .chip-row--mobile > .chip {
+      background: none;
+      border: 0;
+      padding: 0;
+      color: rgb(255 255 255 / 0.9);
+    }
+    .hero-gradient .chip-row--mobile > .chip svg { color: #fff; }
+  }
+
+  /* CTA: белая кнопка с синим текстом */
+  .hero-cta-primary {
+    background: #fff;
+    color: #0b3e86;
+  }
+  .hero-cta-primary:hover { background: #eef4fb; }
+  .hero-cta-secondary {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgb(255 255 255 / 0.5);
+  }
+
+  /* Плавающие нутриенты — белые, едва заметные */
+  .hero-gradient .hero-element { color: rgb(255 255 255 / 0.1); }
+
+  /* Рамка телефона на градиенте — светлая */
+  .hero-gradient .phone-frame {
+    background: linear-gradient(160deg, #ffffff, #dbe9f7);
+    box-shadow: 0 18px 40px rgb(4 26 56 / 0.35);
+  }
+
+  /* Мягкое скругление низа hero, синий не растягивается на вторую секцию */
+  .hero-gradient { border-bottom-left-radius: 28px; border-bottom-right-radius: 28px; }
+
+  /* Скрин в hero: ширина ограничена, иначе он растягивается на всю колонку */
+  .hero-shot__frame { max-width: 270px; margin-inline: auto; }
+
+  @media (max-width: 640px) {
+    .hero-shot__frame img { max-height: 44vh; width: auto; margin-inline: auto; }
+    .hero-shot__frame { display: inline-block; }
+    .hero-shot { text-align: center; }
+  }
+
+  /* Шапка над градиентом — прозрачная и белая */
+  .site-header--over .header-wordmark { color: #fff; }
+  .site-header--over .header-link { color: rgb(255 255 255 / 0.92); }
+  .site-header--over .header-link:hover { color: #fff; }
+  .site-header--over .header-cta { background: #fff; color: #0b3e86; }
+  .site-header--over .header-cta:hover { background: #eef4fb; }
 }

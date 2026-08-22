@@ -20,13 +20,13 @@ const Index = () => {
       <StickyCTA />
       <Hero />
       <Reveal>
+        <HowItWorks />
+      </Reveal>
+      <Reveal>
         <DeficiencyConsequences />
       </Reveal>
       <Reveal>
         <WhyItWorks />
-      </Reveal>
-      <Reveal>
-        <HowItWorks />
       </Reveal>
       <Reveal>
         <Testimonials />

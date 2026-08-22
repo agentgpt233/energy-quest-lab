@@ -26,12 +26,10 @@ export const DeficiencyConsequences = () => {
                 key={consequence.title}
                 className="compact-card bg-card border border-border hover-lift hover:border-primary/50 hover:shadow-lg"
               >
-                <div className="compact-card__head">
-                  <span className="compact-card__icon bg-primary/10">
-                    <Icon className="w-[18px] h-[18px] text-primary" aria-hidden="true" />
-                  </span>
-                  <h3 className="compact-card__title text-foreground">{consequence.title}</h3>
-                </div>
+                <span className="compact-card__icon bg-primary/10">
+                  <Icon className="w-[18px] h-[18px] text-primary" aria-hidden="true" />
+                </span>
+                <h3 className="compact-card__title text-foreground">{consequence.title}</h3>
                 <p className="compact-card__text text-muted-foreground">{consequence.description}</p>
               </div>
             );
