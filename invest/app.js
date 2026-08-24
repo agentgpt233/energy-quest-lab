@@ -8,7 +8,7 @@
 const METRICS = {
 
   /* --- дата актуальности данных (выводится в блоке «Цифры проекта») --- */
-  updated: '18 августа 2026',
+  updated: '24 августа 2026',
 
   /* --- контакты и ссылки --- */
   email:       'farmico@list.ru',
@@ -24,7 +24,30 @@ const METRICS = {
   yandexMetrikaId: null,
 
   /* --- параметры раунда --- */
-  round: { amount: 25000000, amountShort: '25 млн ₽', share: 20, horizonYears: 3 },
+  /* Финмодель v2.1. Запрос — вилка, зависит от модели команды:
+     AI-lean -> 10,5 млн ₽, классический штат -> 19,5 млн ₽. */
+  round: {
+    amountShort: '10,5–19,5 млн ₽',
+    tranchesShort: 'два транша',
+    share: 20,
+    horizonYears: 3
+  },
+
+  /* Тексты по раунду (финмодель v2.1) */
+  trancheNote: 'Раунд 10,5–19,5 млн ₽ двумя траншами. Второй транш — только после подтверждения ' +
+               'юнит-экономики на живом трафике: инвестор не платит за масштабирование ' +
+               'до доказанной конверсии.',
+  trancheBreakdown: 'Транш 1 — 7,0 млн ₽: продукт, запуск СТМ, ИИ-оборудование и проверка ' +
+                    'юнит-экономики. Транш 2 — 5,5 млн ₽: масштабирование рекламы, ' +
+                    'выплачивается только после подтверждения конверсии ≥ 2 % (gate).',
+  whyRange: 'Почему вилка. Нижняя граница — AI-lean операционная модель (фаундер + AI-агентная ' +
+            'разработка + минимальный наём): выход в прибыль на 7-й месяц. Верхняя — классическая ' +
+            'команда с ускоренным наймом. Разница — около 9 млн ₽ и 2 месяца до безубыточности; ' +
+            'выбор структуры — совместно с инвестором.',
+  riskNote: 'Снижение риска. Модель построена на верифицированных данных: два замера CPI, ' +
+            'работающие платежи, фактическая комиссия магазина и себестоимость AI. Два допущения — ' +
+            'конверсия и удержание — проверяются в первые 2 месяца на бюджете около 150 тыс ₽ ' +
+            'до раскрытия основного капитала.',
 
   /* --- охраняемые документы (номера) --- */
   patent:    '2867260',
@@ -34,9 +57,9 @@ const METRICS = {
   /* --- карточки блока «Цифры проекта» ---
      tag: 'fact' — факт, 'est' — оценка, 'fcst' — прогноз                     */
   cards: [
-    { value: 13.31, decimals: 2, unit: '₽',
+    { value: 13, suffix: '–25', unit: '₽',
       label: 'CPI — стоимость установки',
-      note:  'Реальная кампания ВКонтакте: в 11 раз ниже прогноза 150 ₽.', tag: 'fact' },
+      note:  'Два верифицированных замера: январь и август 2026, VK Ads.', tag: 'fact' },
 
     { value: 1000, suffix: '+',
       label: 'установок в RuStore',
@@ -50,6 +73,18 @@ const METRICS = {
       label: 'подписка Premium',
       note:  'Монетизация работает в проде, платежи проходят.', tag: 'fact' },
 
+    { value: 15, unit: '%',
+      label: 'комиссия RuStore',
+      note:  'Подтверждена фактической выплатой магазина.', tag: 'fact' },
+
+    { value: 7, unit: 'мес.',
+      label: 'выход в операционный плюс',
+      note:  'Базовый сценарий финмодели при AI-lean команде.', tag: 'fcst' },
+
+    { value: 28, suffix: '–30', unit: '%',
+      label: 'доля БАД и партнёрских сервисов',
+      note:  'В выручке к концу второго года.', tag: 'fcst' },
+
     { value: 50, suffix: '+', unit: 'млрд ₽/год',
       label: 'рынок HealthTech в России',
       note:  'Оценка объёма, рост 12–15 % в год.', tag: 'est' },
@@ -59,8 +94,10 @@ const METRICS = {
       note:  'Оценка объёма, рост 12–15 % в год.', tag: 'est' }
   ],
 
-  metricsFootnote: 'Рекламная кампания возобновлена в августе 2026 — значение CPI будет обновляться. ' +
-                   'Рыночные объёмы приведены как оценка, плановые показатели помечены как прогноз.',
+
+  metricsFootnote: 'CPI подтверждён двумя замерами кампаний VK Ads (январь и август 2026) и будет обновляться. ' +
+                   'Рыночные объёмы приведены как оценка, показатели финмодели помечены как прогноз ' +
+                   'и не гарантируются.',
 
   /* --- «Как это работает» --- */
   steps: [
@@ -91,6 +128,7 @@ const METRICS = {
   arpu: 1139,
   paybackFrom: 1,
   paybackTo: 2,
+  ltvCac: 'LTV/CAC 2–3× на консервативных допущениях, 5×+ при целевом удержании',
 
   /* --- наука и защита --- */
   science: [
@@ -106,13 +144,19 @@ const METRICS = {
   ],
 
   /* --- использование средств (сумма долей должна давать 100 %) --- */
-  fundsNote: 'Базовый план — структура уточняется по итогам раунда.',
+  fundsNote: 'Доли рассчитаны из затрат финмодели v2.1 до точки безубыточности (месяцы 1–7, ' +
+             'сценарий база × lean). ИИ-инфраструктура — оборудование и датасеты (CAPEX); ' +
+             'СТМ БАД — СГР, «Честный знак» и первая партия; наука и ИС — НИР с НИИ гигиены ' +
+             'и патент США.',
   funds: [
-    { label: 'Команда',                        percent: 40, amount: 10000000, color: '#0a6fb3' },
-    { label: 'Маркетинг',                      percent: 28, amount:  7000000, color: '#0f9ee6' },
-    { label: 'Производство линейки БАД',       percent: 20, amount:  5000000, color: '#57c0f4' },
-    { label: 'IT-инфраструктура и резерв',     percent: 12, amount:  3000000, color: '#9ee7ff' }
+    { label: 'Маркетинг и рост',                    percent: 33, color: '#0a6fb3' },
+    { label: 'Команда',                             percent: 33, color: '#0f9ee6' },
+    { label: 'Собственная ИИ-инфраструктура',       percent: 14, color: '#57c0f4' },
+    { label: 'Запуск СТМ БАД',                      percent:  8, color: '#7fd4f7' },
+    { label: 'Наука и ИС',                            percent:  5, color: '#9ee7ff' },
+    { label: 'Операции, юридическое, резерв',       percent:  8, color: '#c7ecff' }
   ],
+
 
   /* --- дорожная карта --- */
   roadmap: [
@@ -121,7 +165,7 @@ const METRICS = {
     { period: 'Мес. 7–12', text: 'Масштабирование, БАД на маркетплейсах, первые B2B-контракты.' },
     { period: 'Год 2–3',   text: 'Federal scale, выход в СНГ, подготовка раунда Series A.' }
   ],
-  revenueYear3: '≈ 290 млн ₽/год',
+  revenue: { y1: '≈ 27 млн ₽', y2: '≈ 58 млн ₽', y3: '≈ 60 млн ₽' },
 
   /* --- команда --- */
   team: [
@@ -169,12 +213,17 @@ const METRICS = {
     patent:          METRICS.patent,
     metricsFootnote: METRICS.metricsFootnote,
     roundAmountShort: METRICS.round.amountShort,
-    roundLine: 'Запрос: ' + nf.format(METRICS.round.amount) + ' ₽ · доля ' + METRICS.round.share +
-               '% · горизонт ' + METRICS.round.horizonYears + ' года',
-    arpuLine: 'ARPU платящего пользователя — ' + nf.format(METRICS.arpu) + ' ₽/мес · окупаемость привлечения ≈ ' +
-              METRICS.paybackFrom + '–' + METRICS.paybackTo + ' мес. (расчёт по модели)',
-    forecastLine: 'Прогноз выручки к третьему году — ' + METRICS.revenueYear3 +
-                  ' (базовый сценарий, прогноз — не гарантируется).'
+    roundLine: 'Запрос: ' + METRICS.round.amountShort + ' · ' + METRICS.round.tranchesShort +
+               ' · доля ' + METRICS.round.share + '% · горизонт ' + METRICS.round.horizonYears + ' года',
+    arpuLine: 'ARPU платящего пользователя — ' + nf.format(METRICS.arpu) + ' ₽/мес · окупаемость ' +
+              'привлечения ≈ ' + METRICS.paybackFrom + '–' + METRICS.paybackTo + ' мес. · ' +
+              METRICS.ltvCac + ' (расчёт по модели)',
+    forecastLine: 'Прогноз выручки: год 1 — ' + METRICS.revenue.y1 + ' · год 2 — ' + METRICS.revenue.y2 +
+                  ' · год 3 — ' + METRICS.revenue.y3 + ' (базовый сценарий, прогноз — не гарантируется).',
+    trancheNote: METRICS.trancheNote,
+    trancheBreakdown: METRICS.trancheBreakdown,
+    whyRange: METRICS.whyRange,
+    riskNote: METRICS.riskNote
   };
 
   var HREF = { mailto: mailtoHref, mailtoPlain: mailtoHref, rustore: METRICS.rustoreUrl };
@@ -279,7 +328,7 @@ const METRICS = {
                '<span class="fund__dot" style="background:' + f.color + '"></span>' +
                '<span class="fund__name">' + esc(f.label) + '</span>' +
                '<span class="fund__pct">' + f.percent + '%</span>' +
-               '<span class="fund__amt">' + nf.format(f.amount) + ' ₽</span>' +
+               (f.amount ? '<span class="fund__amt">' + nf.format(f.amount) + ' ₽</span>' : '') +
              '</div>' +
              '<div class="fund__bar"><span class="fund__fill" data-w="' + f.percent +
                '" style="background:' + f.color + '"></span></div></li>';
