@@ -110,12 +110,32 @@ const METRICS = {
              'подходит для коррекции любого дефицита — индивидуально, по значениям и нормам.' }
   ],
 
-  /* --- галерея скриншотов (добавить файл в assets/ и строку сюда) --- */
+  /* --- карусель реальных экранов приложения ---
+     Файлы лежат в /screens (корень сайта), сжаты до 640px WebP.
+     Чтобы добавить кадр: положите NN.webp в public/screens и допишите строку. */
+  galleryTitle:    'Продукт уже работает',
+  gallerySubtitle: 'Реальные экраны приложения из RuStore, версия 1.6.4',
   gallery: [
-    { file: 'app-home',     caption: 'Главный экран: нормы и прогресс дня',
-      alt:  'Главный экран Medical Mind: анализ по фото, суточная, среднесрочная и долгосрочная норма нутриентов' },
-    { file: 'app-analysis', caption: 'Разбор блюда: КБЖУ и нутриенты',
-      alt:  'Экран разбора блюда: калории, белки, жиры, углеводы, витамины, минералы и жирные кислоты' }
+    { file: '01', caption: 'Фото — и ИИ определяет блюдо',
+      alt: 'Экран камеры: подсказки по съёмке блюда' },
+    { file: '02', caption: '30+ нутриентов по каждому блюду',
+      alt: 'Карточка борща: калории, белки, жиры и витамины' },
+    { file: '03', caption: 'Видим дефициты пользователя',
+      alt: 'Суточная норма: 35 % элементов без дефицита' },
+    { file: '04', caption: 'Персональный анализ дефицитов',
+      alt: 'Коррекция дефицитов: анализ 23 элементов и подбор блюд' },
+    { file: '05', caption: 'Запатентованная методика коррекции',
+      alt: 'Схема приёма на месяц с научной основой НИИ гигиены' },
+    { file: '06', caption: 'Учёт питания по дням',
+      alt: 'Дневник питания за день с приёмами пищи и КБЖУ' },
+    { file: '07', caption: 'Всё питание в одном экране',
+      alt: 'Главный экран: нормы, прогресс и сундуки наград' },
+    { file: '08', caption: 'Геймификация удерживает',
+      alt: 'Квест закрыт: начислены опыт и витакоины' },
+    { file: '09', caption: 'Награды за регулярность',
+      alt: 'Экран полученной награды из сундука' },
+    { file: '10', caption: 'Монетизация: подписка + витакоины',
+      alt: 'Магазин: подписка Premium 999 ₽/мес и пакеты витакоинов' }
   ],
 
   /* --- бизнес-модель --- */
@@ -212,6 +232,8 @@ const METRICS = {
     email:           METRICS.email,
     patent:          METRICS.patent,
     metricsFootnote: METRICS.metricsFootnote,
+    galleryTitle:    METRICS.galleryTitle,
+    gallerySubtitle: METRICS.gallerySubtitle,
     roundAmountShort: METRICS.round.amountShort,
     roundLine: 'Запрос: ' + METRICS.round.amountShort + ' · ' + METRICS.round.tranchesShort +
                ' · доля ' + METRICS.round.share + '% · горизонт ' + METRICS.round.horizonYears + ' года',
@@ -274,16 +296,99 @@ const METRICS = {
              '<h3>' + esc(s.title) + '</h3><p>' + esc(s.text) + '</p></li>';
   }).join('');
 
-  /* ---------- галерея ---------- */
-  $('#gallery').innerHTML = METRICS.gallery.map(function (g, i) {
-    return '<figure class="shot reveal" data-delay="' + i * 90 + '">' +
-             '<picture>' +
-               '<source type="image/webp" srcset="assets/' + g.file + '.webp">' +
-               '<img src="assets/' + g.file + '.jpg" width="560" height="1214" loading="lazy" ' +
-                 'decoding="async" alt="' + esc(g.alt) + '">' +
-             '</picture>' +
-             '<figcaption>' + esc(g.caption) + '</figcaption></figure>';
-  }).join('');
+  /* ---------- карусель экранов ---------- */
+  var galleryEl = $('#gallery');
+  if (galleryEl) {
+    galleryEl.innerHTML =
+      '<div class="shots__track" id="shotsTrack">' +
+        METRICS.gallery.map(function (g, i) {
+          return '<figure class="shot">' +
+                   '<div class="shot__frame">' +
+                     '<img src="/screens/' + g.file + '.webp" width="640" height="1422" ' +
+                       'loading="' + (i < 2 ? 'eager' : 'lazy') + '" decoding="async" ' +
+                       'alt="' + esc(g.alt) + '">' +
+                   '</div>' +
+                   '<figcaption>' + esc(g.caption) + '</figcaption>' +
+                 '</figure>';
+        }).join('') +
+      '</div>' +
+      '<button type="button" class="shots__arrow shots__arrow--prev" id="shotsPrev" ' +
+        'aria-label="Предыдущий экран">&#8249;</button>' +
+      '<button type="button" class="shots__arrow shots__arrow--next" id="shotsNext" ' +
+        'aria-label="Следующий экран">&#8250;</button>' +
+      '<div class="shots__dots" id="shotsDots" role="tablist" aria-label="Экраны приложения">' +
+        METRICS.gallery.map(function (g, i) {
+          return '<button type="button" role="tab" class="shots__dot' + (i === 0 ? ' is-active' : '') +
+                 '" aria-selected="' + (i === 0) + '" aria-label="' + esc(g.caption) + '"></button>';
+        }).join('') +
+      '</div>';
+
+    initShots();
+  }
+
+  function initShots() {
+    var track = $('#shotsTrack');
+    var dots  = $$('#shotsDots .shots__dot');
+    if (!track) { return; }
+
+    var active = 0, paused = false, timer = null, ticking = false;
+
+    function slideStep() {
+      var first = track.firstElementChild;
+      if (!first) { return 0; }
+      var gap = parseFloat(getComputedStyle(track).columnGap || '0') || 0;
+      return first.getBoundingClientRect().width + gap;
+    }
+
+    function setActive(i) {
+      if (i === active) { return; }
+      active = i;
+      dots.forEach(function (d, n) {
+        d.classList.toggle('is-active', n === i);
+        d.setAttribute('aria-selected', n === i);
+      });
+    }
+
+    function goTo(i, smooth) {
+      var n = (i + METRICS.gallery.length) % METRICS.gallery.length;
+      track.scrollTo({ left: slideStep() * n, behavior: smooth === false ? 'auto' : 'smooth' });
+    }
+
+    track.addEventListener('scroll', function () {
+      if (ticking) { return; }
+      ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        var step = slideStep();
+        if (step) { setActive(Math.min(Math.max(Math.round(track.scrollLeft / step), 0),
+                                       METRICS.gallery.length - 1)); }
+      });
+    }, { passive: true });
+
+    $('#shotsPrev').addEventListener('click', function () { goTo(active - 1); });
+    $('#shotsNext').addEventListener('click', function () { goTo(active + 1); });
+    dots.forEach(function (d, i) { d.addEventListener('click', function () { goTo(i); }); });
+
+    /* автопрокрутка: не стартует при prefers-reduced-motion, встаёт при
+       наведении, фокусе и касании */
+    function start() {
+      if (reduced || timer) { return; }
+      timer = window.setInterval(function () {
+        if (!paused) { goTo(active + 1); }
+      }, 4000);
+    }
+    function hold()    { paused = true; }
+    function release() { paused = false; }
+
+    ['mouseenter', 'focusin', 'touchstart', 'pointerdown'].forEach(function (e) {
+      galleryEl.addEventListener(e, hold, { passive: true });
+    });
+    ['mouseleave', 'focusout', 'touchend', 'touchcancel'].forEach(function (e) {
+      galleryEl.addEventListener(e, release, { passive: true });
+    });
+
+    start();
+  }
 
   /* ---------- бизнес-модель ---------- */
   $('#modelGrid').innerHTML = METRICS.business.map(function (b, i) {
