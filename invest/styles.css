@@ -431,8 +431,8 @@ a:hover { text-decoration: underline; }
   position: absolute; inset: 0; display: flex; flex-direction: column;
   align-items: center; justify-content: center; text-align: center; pointer-events: none;
 }
-/* Запрос — вилка «10,5–19,5 млн ₽»: кегль подобран так, чтобы строка
-   ложилась в отверстие диаграммы в две строки и не вылезала за кольцо. */
+/* Сумма раунда в центре диаграммы: кегль подобран так, чтобы строка
+   ложилась в отверстие в две строки и не вылезала за кольцо. */
 .funds__center b {
   font-size: 19px; font-weight: 800; letter-spacing: -.02em; color: var(--ink);
   line-height: 1.15; max-width: 116px;
