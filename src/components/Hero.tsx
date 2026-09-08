@@ -13,7 +13,7 @@ const PAINS = [
 const ELEMENTS = ["Ca", "Mg", "Zn", "Fe", "K", "Na"];
 
 const SocialProof = () => {
-  const installs = useCountUp(1000);
+  const installs = useCountUp(2600);
   const rating = useCountUp(5, 1);
 
   return (
@@ -77,9 +77,9 @@ export const Hero = () => {
               className="hero-lead text-base sm:text-lg leading-relaxed max-w-2xl rise"
               style={{ "--rise-delay": "180ms" } as React.CSSProperties}
             >
-              Medical Mind за секунды рассчитывает КБЖУ и 30+ нутриентов, находит скрытые
-              дефициты витаминов и минералов — и возвращает энергию через персональный план
-              питания.
+              Medical Mind по фото блюда за секунды считает 30+ нутриентов, выявляет дефициты
+              витаминов и минералов и формирует персональную схему их закрытия — подбором блюд
+              и графиком приёма с учётом совместимости компонентов.
             </p>
 
             {/* Боли — чипами в строку: на телефоне это 2 строки вместо 3 блоков */}

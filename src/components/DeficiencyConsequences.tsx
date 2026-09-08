@@ -14,7 +14,9 @@ export const DeficiencyConsequences = () => {
         <div className="section-head text-center max-w-3xl mx-auto">
           <h2 className="text-foreground">Последствия дефицита</h2>
           <p className="text-muted-foreground">
-            Дефицит витаминов и минералов — одна из основных причин снижения энергии и мотивации
+            Более 70&nbsp;% россиян живут с дефицитом микронутриентов и не знают об этом:
+            приложения считают только КБЖУ, анализ крови — 5–95 тыс&nbsp;₽ и дни ожидания,
+            нутрициолог — от 3&nbsp;000&nbsp;₽. БАД покупают наугад.
           </p>
         </div>
 
@@ -35,6 +37,14 @@ export const DeficiencyConsequences = () => {
             );
           })}
         </div>
+
+        <p className="mx-auto mt-6 max-w-3xl text-center text-[13px] leading-relaxed text-muted-foreground">
+          Чаще всего с этим сталкиваются женщины 25–45 лет (около 70&nbsp;% аудитории), люди
+          в спорте и фитнесе и те, кто держит специальные диеты. Для бизнеса — клиники,
+          фитнес-сети и нутрициологи.
+          <br />
+          <span className="opacity-80">БАД не является лекарственным средством.</span>
+        </p>
       </div>
     </section>
   );
