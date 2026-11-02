@@ -9,6 +9,7 @@ import { Testimonials } from "@/components/Testimonials";
 import { Bonus } from "@/components/Bonus";
 import { FAQ } from "@/components/FAQ";
 import { Trust } from "@/components/Trust";
+import { EsimTravel } from "@/components/EsimTravel";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 
@@ -39,6 +40,9 @@ const Index = () => {
       </Reveal>
       <Reveal>
         <Trust />
+      </Reveal>
+      <Reveal>
+        <EsimTravel />
       </Reveal>
       <Footer />
     </div>
